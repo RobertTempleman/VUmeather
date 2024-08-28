@@ -1,0 +1,928 @@
+# depslib dependency file v1.0
+1414630267 source:c:\arduino\metaldt_\ad_gbatext.cpp
+	"AD_metaldt_UI.h"
+	<avr/pgmspace.h>
+
+1414625837 c:\arduino\metaldt_\ad_metaldt_ui.h
+
+1414630267 source:c:\arduino\metaldt_\ad_metaldt_ui.cpp
+	<stdio.h>
+	"AD_metaldt_UI.h"
+	"AD_GBAtext.h"
+	"AD_RTTcolours.h"
+	<avr/pgmspace.h>
+
+1414622471 c:\arduino\metaldt_\ad_gbatext.h
+
+1414096673 c:\arduino\metaldt_\ad_rttcolours.h
+
+1414692785 source:c:\arduino\metaldt_\metaldt_.ino
+	<Arduino.h>
+	<SPI.h>
+	<Adafruit_GFX.h>
+	<Adafruit_ST7735.h>
+	"AD_metaldt_UI.h"
+	"AD_GBAtext.h"
+
+1371033102 c:\codeblocks\arduino\hardware\arduino\cores\arduino\arduino.h
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<avr/pgmspace.h>
+	<avr/io.h>
+	<avr/interrupt.h>
+	"binary.h"
+	"WCharacter.h"
+	"WString.h"
+	"HardwareSerial.h"
+	"pins_arduino.h"
+
+1362986950 c:\codeblocks\arduino\hardware\arduino\cores\arduino\binary.h
+
+1362986950 c:\codeblocks\arduino\hardware\arduino\cores\arduino\wcharacter.h
+	<ctype.h>
+
+1371033134 c:\codeblocks\arduino\hardware\arduino\cores\arduino\wstring.h
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<avr/pgmspace.h>
+
+1362986950 c:\codeblocks\arduino\hardware\arduino\cores\arduino\hardwareserial.h
+	<inttypes.h>
+	"Stream.h"
+	"USBAPI.h"
+
+1371032830 c:\codeblocks\arduino\hardware\arduino\cores\arduino\stream.h
+	<inttypes.h>
+	"Print.h"
+
+1362986950 c:\codeblocks\arduino\hardware\arduino\cores\arduino\print.h
+	<inttypes.h>
+	<stdio.h>
+	"WString.h"
+	"Printable.h"
+
+1362986950 c:\codeblocks\arduino\hardware\arduino\cores\arduino\printable.h
+	<new.h>
+
+1362986950 c:\codeblocks\arduino\hardware\arduino\cores\arduino\new.h
+	<stdlib.h>
+
+1362986950 c:\codeblocks\arduino\hardware\arduino\cores\arduino\usbapi.h
+
+1362986950 c:\codeblocks\arduino\hardware\arduino\variants\eightanaloginputs\pins_arduino.h
+	"../standard/pins_arduino.h"
+
+1362986950 c:\codeblocks\arduino\hardware\arduino\variants\standard\pins_arduino.h
+	<avr/pgmspace.h>
+
+1414630267 source:c:\metaldt_\sw\metaldt_ui\ad_metaldt_\ad_gbatext.cpp
+	"AD_metaldt_UI.h"
+	<avr/pgmspace.h>
+
+1414625837 c:\metaldt_\sw\metaldt_ui\ad_metaldt_\ad_metaldt_ui.h
+
+1414630267 source:c:\metaldt_\sw\metaldt_ui\ad_metaldt_\ad_metaldt_ui.cpp
+	<stdio.h>
+	"AD_metaldt_UI.h"
+	"AD_GBAtext.h"
+	"AD_RTTcolours.h"
+	<avr/pgmspace.h>
+
+1414622471 c:\metaldt_\sw\metaldt_ui\ad_metaldt_\ad_gbatext.h
+
+1414096673 c:\metaldt_\sw\metaldt_ui\ad_metaldt_\ad_rttcolours.h
+
+1417030008 source:c:\metaldt_\sw\metaldt_ui\gbatext.cpp
+	"stdafx.h"
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_WIN.h"
+	<vector>
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_AVR.h"
+	<avr/pgmspace.h>
+
+1414854755 c:\metaldt_\sw\metaldt_ui\stdafx.h
+	"targetver.h"
+	<windows.h>
+	<stdlib.h>
+	<malloc.h>
+	<memory.h>
+	<tchar.h>
+
+1413835033 c:\metaldt_\sw\metaldt_ui\targetver.h
+	<SDKDDKVer.h>
+
+1417982186 c:\metaldt_\sw\metaldt_ui\metaldt_ui_avr.h
+
+1417982180 source:c:\metaldt_\sw\metaldt_ui\metaldt_ui_avr.cpp
+	<stdio.h>
+	<SPI.h>
+	<Adafruit_GFX.h>
+	<Adafruit_ST7735.h>
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_AVR.h"
+	"GBAtext.h"
+	"RTTcolours.h"
+	<avr/pgmspace.h>
+	<EEPROM.h>
+	"metaldt__code.cpp"
+
+1416963028 c:\metaldt_\sw\metaldt_ui\gbatext.h
+
+1416345906 c:\metaldt_\sw\metaldt_ui\rttcolours.h
+
+1417982301 c:\metaldt_\sw\metaldt_ui\metaldt__code.cpp
+
+1417982807 source:c:\metaldt_\sw\metaldt_ui\metaldt__codeblocks.ino
+	<Arduino.h>
+	"metaldt__codeblocks.ino.h"
+	<EEPROM.h>
+	"GBAtext.h"
+	"RTTcolours.h"
+	<avr/interrupt.h>
+	<avr/io.h>
+	<SPI.h>
+	<Adafruit_GFX.h>
+	<Adafruit_ST7735.h>
+	"metaldt_UI_AVR.h"
+	"GBAtext.h"
+
+1417827632 c:\metaldt_\sw\metaldt_ui\metaldt_ui_win.h
+	"resource.h"
+
+1413835033 c:\metaldt_\sw\metaldt_ui\resource.h
+
+1355118632 source:c:\program files (x86)\arduino\libraries\spi\spi.cpp
+	"pins_arduino.h"
+	"SPI.h"
+
+1355118632 c:\program files (x86)\arduino\libraries\spi\spi.h
+	<stdio.h>
+	<Arduino.h>
+	<avr/pgmspace.h>
+
+1415316525 source:c:\metaldt_\sw\metaldt_ui\gfx_code\adafruit-gfx\adafruit_gfx.cpp
+	"Adafruit_GFX.h"
+	"glcdfont.c"
+	<avr/pgmspace.h>
+
+1415316525 c:\metaldt_\sw\metaldt_ui\gfx_code\adafruit-gfx\adafruit_gfx.h
+	"Arduino.h"
+	"Print.h"
+	"WProgram.h"
+
+1411843944 c:\metaldt_\sw\metaldt_ui\gfx_code\adafruit-gfx\glcdfont.c
+	<avr/io.h>
+	<avr/pgmspace.h>
+
+1417982331 source:c:\metaldt_\sw\metaldt_ui\gfx_code\adafruit_st7735\adafruit_st7735.cpp
+	<SPI.h>
+	"Adafruit_ST7735.h"
+	<limits.h>
+	"pins_arduino.h"
+	"wiring_private.h"
+
+1417037774 c:\metaldt_\sw\metaldt_ui\gfx_code\adafruit_st7735\adafruit_st7735.h
+	"Arduino.h"
+	"Print.h"
+	"WProgram.h"
+	<avr/pgmspace.h>
+
+1371033126 c:\codeblocks\arduino\hardware\arduino\cores\arduino\wiring_private.h
+	<avr/io.h>
+	<avr/interrupt.h>
+	<stdio.h>
+	<stdarg.h>
+	"Arduino.h"
+
+1411843944 source:c:\metaldt_\sw\metaldt_ui\gfx_code\adafruit-gfx\glcdfont.c
+	<avr/io.h>
+	<avr/pgmspace.h>
+
+1417880957 c:\metaldt_\sw\metaldt_ui\metaldt__codeblocks.ino.h
+
+1355118630 source:c:\program files (x86)\arduino\libraries\eeprom\eeprom.cpp
+	<avr/eeprom.h>
+	"Arduino.h"
+	"EEPROM.h"
+
+1355118630 c:\program files (x86)\arduino\libraries\eeprom\eeprom.h
+	<inttypes.h>
+
+1369565972 source:c:\metaldt_\sw\metaldt_ui\comms_code\virtualwire\virtualwire.cpp
+	"WProgram.h"
+	"legacymsp430.h"
+	"Energia.h"
+	"VirtualWire.h"
+	<util/crc16.h>
+
+1363883522 c:\metaldt_\sw\metaldt_ui\comms_code\virtualwire\virtualwire.h
+	<stdlib.h>
+	<Arduino.h>
+	<wiring.h>
+	"legacymsp430.h"
+	"Energia.h"
+
+1355118630 source:d:\c\codeblocks\arduino\libraries\eeprom\eeprom.cpp
+	<avr/eeprom.h>
+	"Arduino.h"
+	"EEPROM.h"
+
+1371033102 d:\c\codeblocks\arduino\hardware\arduino\cores\arduino\arduino.h
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<avr/pgmspace.h>
+	<avr/io.h>
+	<avr/interrupt.h>
+	"binary.h"
+	"WCharacter.h"
+	"WString.h"
+	"HardwareSerial.h"
+	"pins_arduino.h"
+
+1362990550 d:\c\codeblocks\arduino\hardware\arduino\cores\arduino\binary.h
+
+1362990550 d:\c\codeblocks\arduino\hardware\arduino\cores\arduino\wcharacter.h
+	<ctype.h>
+
+1371033134 d:\c\codeblocks\arduino\hardware\arduino\cores\arduino\wstring.h
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<avr/pgmspace.h>
+
+1362990550 d:\c\codeblocks\arduino\hardware\arduino\cores\arduino\hardwareserial.h
+	<inttypes.h>
+	"Stream.h"
+	"USBAPI.h"
+
+1371032830 d:\c\codeblocks\arduino\hardware\arduino\cores\arduino\stream.h
+	<inttypes.h>
+	"Print.h"
+
+1362990550 d:\c\codeblocks\arduino\hardware\arduino\cores\arduino\print.h
+	<inttypes.h>
+	<stdio.h>
+	"WString.h"
+	"Printable.h"
+
+1362990550 d:\c\codeblocks\arduino\hardware\arduino\cores\arduino\printable.h
+	<new.h>
+
+1362990550 d:\c\codeblocks\arduino\hardware\arduino\cores\arduino\new.h
+	<stdlib.h>
+
+1362990550 d:\c\codeblocks\arduino\hardware\arduino\cores\arduino\usbapi.h
+
+1362990550 d:\c\codeblocks\arduino\hardware\arduino\variants\eightanaloginputs\pins_arduino.h
+	"../standard/pins_arduino.h"
+
+1362990550 d:\c\codeblocks\arduino\hardware\arduino\variants\standard\pins_arduino.h
+	<avr/pgmspace.h>
+
+1355118630 d:\c\codeblocks\arduino\libraries\eeprom\eeprom.h
+	<inttypes.h>
+
+1417033608 source:d:\c\peq\metaldt_tow\sw\metaldt_ui\gbatext.cpp
+	"stdafx.h"
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_WIN.h"
+	<vector>
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_AVR.h"
+	<avr/pgmspace.h>
+
+1414858355 d:\c\peq\metaldt_tow\sw\metaldt_ui\stdafx.h
+	"targetver.h"
+	<windows.h>
+	<stdlib.h>
+	<malloc.h>
+	<memory.h>
+	<tchar.h>
+
+1413835033 d:\c\peq\metaldt_tow\sw\metaldt_ui\targetver.h
+	<SDKDDKVer.h>
+
+1419383275 d:\c\peq\metaldt_tow\sw\metaldt_ui\metaldt__codeblocks.ino.h
+
+1417831232 d:\c\peq\metaldt_tow\sw\metaldt_ui\metaldt_ui_win.h
+	"resource.h"
+
+1413835033 d:\c\peq\metaldt_tow\sw\metaldt_ui\resource.h
+
+1417985786 d:\c\peq\metaldt_tow\sw\metaldt_ui\metaldt_ui_avr.h
+
+1421965020 source:d:\c\peq\metaldt_tow\sw\metaldt_ui\metaldt__codeblocks.ino
+	<Arduino.h>
+	"metaldt__codeblocks.ino.h"
+	<EEPROM.h>
+	"GBAtext.h"
+	"RTTcolours.h"
+	<avr/interrupt.h>
+	<avr/io.h>
+	<SPI.h>
+	<Adafruit_GFX.h>
+	<Adafruit_ST7735.h>
+	"metaldt_UI_AVR.h"
+	"GBAtext.h"
+
+1416966628 d:\c\peq\metaldt_tow\sw\metaldt_ui\gbatext.h
+
+1416349506 d:\c\peq\metaldt_tow\sw\metaldt_ui\rttcolours.h
+
+1417985780 source:d:\c\peq\metaldt_tow\sw\metaldt_ui\metaldt_ui_avr.cpp
+	<stdio.h>
+	<SPI.h>
+	<Adafruit_GFX.h>
+	<Adafruit_ST7735.h>
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_AVR.h"
+	"GBAtext.h"
+	"RTTcolours.h"
+	<avr/pgmspace.h>
+	<EEPROM.h>
+	"metaldt__code.cpp"
+
+1419384622 d:\c\peq\metaldt_tow\sw\metaldt_ui\metaldt__code.cpp
+
+1417985931 source:d:\c\peq\metaldt_tow\sw\metaldt_ui\gfx_code\adafruit_st7735\adafruit_st7735.cpp
+	<SPI.h>
+	"Adafruit_ST7735.h"
+	<limits.h>
+	"pins_arduino.h"
+	"wiring_private.h"
+
+1417041374 d:\c\peq\metaldt_tow\sw\metaldt_ui\gfx_code\adafruit_st7735\adafruit_st7735.h
+	"Arduino.h"
+	"Print.h"
+	"WProgram.h"
+	<avr/pgmspace.h>
+
+1371033126 d:\c\codeblocks\arduino\hardware\arduino\cores\arduino\wiring_private.h
+	<avr/io.h>
+	<avr/interrupt.h>
+	<stdio.h>
+	<stdarg.h>
+	"Arduino.h"
+
+1355118632 source:d:\c\codeblocks\arduino\libraries\spi\spi.cpp
+	"pins_arduino.h"
+	"SPI.h"
+
+1355118632 d:\c\codeblocks\arduino\libraries\spi\spi.h
+	<stdio.h>
+	<Arduino.h>
+	<avr/pgmspace.h>
+
+1443192584 source:d:\c\peq\parametric_metaldt_atmega\metaldt_ui\gbatext.cpp
+	"stdafx.h"
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_WIN.h"
+	<vector>
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_AVR.h"
+	<avr/pgmspace.h>
+
+1414858355 d:\c\peq\parametric_metaldt_atmega\metaldt_ui\stdafx.h
+	"targetver.h"
+	<windows.h>
+	<stdlib.h>
+	<malloc.h>
+	<memory.h>
+	<tchar.h>
+
+1413835033 d:\c\peq\parametric_metaldt_atmega\metaldt_ui\targetver.h
+	<SDKDDKVer.h>
+
+1419383275 d:\c\peq\parametric_metaldt_atmega\metaldt_ui\metaldt__codeblocks.ino.h
+
+1443192584 d:\c\peq\parametric_metaldt_atmega\metaldt_ui\metaldt_ui_win.h
+	"resource.h"
+
+1443192584 d:\c\peq\parametric_metaldt_atmega\metaldt_ui\resource.h
+
+1443192584 d:\c\peq\parametric_metaldt_atmega\metaldt_ui\metaldt_ui_avr.h
+
+1443192584 source:d:\c\peq\parametric_metaldt_atmega\metaldt_ui\metaldt__codeblocks.ino
+	<Arduino.h>
+	"metaldt__codeblocks.ino.h"
+	<EEPROM.h>
+	"GBAtext.h"
+	"RTTcolours.h"
+	<avr/interrupt.h>
+	<avr/io.h>
+	<SPI.h>
+	<Adafruit_GFX.h>
+	<Adafruit_ST7735.h>
+	"metaldt_UI_AVR.h"
+	"GBAtext.h"
+
+1416966628 d:\c\peq\parametric_metaldt_atmega\metaldt_ui\gbatext.h
+
+1416349506 d:\c\peq\parametric_metaldt_atmega\metaldt_ui\rttcolours.h
+
+1443192584 source:d:\c\peq\parametric_metaldt_atmega\metaldt_ui\metaldt_ui_avr.cpp
+	<stdio.h>
+	<SPI.h>
+	<Adafruit_GFX.h>
+	<Adafruit_ST7735.h>
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_AVR.h"
+	"GBAtext.h"
+	"RTTcolours.h"
+	<avr/pgmspace.h>
+	<EEPROM.h>
+	"metaldt__code.cpp"
+
+1443192584 d:\c\peq\parametric_metaldt_atmega\metaldt_ui\metaldt__code.cpp
+
+1443192584 source:d:\c\peq\parametric_metaldt_atmega\metaldt_ui\gfx_code\adafruit_st7735\adafruit_st7735.cpp
+	<SPI.h>
+	"Adafruit_ST7735.h"
+	<limits.h>
+	"pins_arduino.h"
+	"wiring_private.h"
+
+1417041374 d:\c\peq\parametric_metaldt_atmega\metaldt_ui\gfx_code\adafruit_st7735\adafruit_st7735.h
+	"Arduino.h"
+	"Print.h"
+	"WProgram.h"
+	<avr/pgmspace.h>
+
+1450651699 source:c:\parametric_metaldt_atmega\metaldt_ui\gbatext.cpp
+	"stdafx.h"
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_WIN.h"
+	<vector>
+	<algorithm>
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_AVR.h"
+	<avr/pgmspace.h>
+
+1414854755 c:\parametric_metaldt_atmega\metaldt_ui\stdafx.h
+	"targetver.h"
+	<windows.h>
+	<stdlib.h>
+	<malloc.h>
+	<memory.h>
+	<tchar.h>
+
+1413835033 c:\parametric_metaldt_atmega\metaldt_ui\targetver.h
+	<SDKDDKVer.h>
+
+1480779586 c:\parametric_metaldt_atmega\metaldt_ui\metaldt__codeblocks.ino.h
+
+1454282694 c:\parametric_metaldt_atmega\metaldt_ui\metaldt_ui_win.h
+	"resource.h"
+	<assert.h>
+	<vector>
+
+1443192584 c:\parametric_metaldt_atmega\metaldt_ui\resource.h
+
+1454282694 c:\parametric_metaldt_atmega\metaldt_ui\metaldt_ui_avr.h
+
+1450575622 source:c:\parametric_metaldt_atmega\metaldt_ui\gfx_code\adafruit_st7735\adafruit_st7735.cpp
+	<SPI.h>
+	"Adafruit_ST7735.h"
+	<limits.h>
+	"pins_arduino.h"
+	"wiring_private.h"
+
+1445382202 c:\parametric_metaldt_atmega\metaldt_ui\gfx_code\adafruit_st7735\adafruit_st7735.h
+	"Arduino.h"
+	"Print.h"
+	"WProgram.h"
+	<avr/pgmspace.h>
+
+1480725236 source:c:\parametric_metaldt_atmega\metaldt_ui\metaldt__codeblocks.ino
+	<Arduino.h>
+	"metaldt__codeblocks.ino.h"
+	<EEPROM.h>
+	"GBAtext.h"
+	"RTTcolours.h"
+	<avr/interrupt.h>
+	<avr/io.h>
+	<SPI.h>
+	<Adafruit_ST7735.h>
+	"metaldt_UI_AVR.h"
+	"GBAtext.h"
+	"preprocessed_data_from_LTSPICE_METALDT_simulation.h"
+
+1416963028 c:\parametric_metaldt_atmega\metaldt_ui\gbatext.h
+
+1445116413 c:\parametric_metaldt_atmega\metaldt_ui\rttcolours.h
+
+1476739646 source:c:\parametric_metaldt_atmega\metaldt_ui\metaldt_ui_avr.cpp
+	<stdio.h>
+	<SPI.h>
+	<Adafruit_ST7735.h>
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_AVR.h"
+	"GBAtext.h"
+	"RTTcolours.h"
+	<avr/pgmspace.h>
+	<EEPROM.h>
+	"metaldt__code.cpp"
+
+1480780402 c:\parametric_metaldt_atmega\metaldt_ui\metaldt__code.cpp
+	"preprocessed_data_from_LTSPICE_METALDT_simulation.h"
+	<algorithm>
+	"preprocessed_graph_pixels.cpp"
+
+1467752271 source:c:\parametric_metaldt_atmega\metaldt_ui\preprocessed_data_from_ltspice_metaldt_simulation.cpp
+	"stdafx.h"
+	"metaldt__codeblocks.ino.h"
+	"preprocessed_data_from_LTSPICE_METALDT_simulation.h"
+	"metaldt_UI_WIN.h"
+	<vector>
+	"metaldt_UI_AVR.h"
+	<avr/pgmspace.h>
+
+1467031878 c:\parametric_metaldt_atmega\metaldt_ui\preprocessed_data_from_ltspice_metaldt_simulation.h
+
+1480292868 c:\parametric_metaldt_atmega\metaldt_ui\preprocessed_graph_pixels.cpp
+
+1447408368 source:c:\parametric_metaldt_atmega\metaldt_ui\rf24\rf24.cpp
+	"nRF24L01.h"
+	"RF24_config.h"
+	"RF24.h"
+
+1447408368 c:\parametric_metaldt_atmega\metaldt_ui\rf24\nrf24l01.h
+
+1447408368 c:\parametric_metaldt_atmega\metaldt_ui\rf24\rf24_config.h
+	"utility/includes.h"
+	"utility/ATTiny/RF24_arch_config.h"
+	"utility/LittleWire/RF24_arch_config.h"
+	"utility/Teensy/RF24_arch_config.h"
+	<Arduino.h>
+	<SPI_UART.h>
+	<SPI.h>
+	<stdint.h>
+	<stdio.h>
+	<string.h>
+	<SPI.h>
+	<avr/pgmspace.h>
+
+1447408368 c:\parametric_metaldt_atmega\metaldt_ui\rf24\rf24.h
+	"RF24_config.h"
+	"utility/includes.h"
+	<LittleWireSPI/LittleWireSPI.h>
+	<DigitalIO.h>
+
+1480888463 source:c:\metal detecturd\sw\metaldt_ui\gbatext.cpp
+	"stdafx.h"
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_WIN.h"
+	<vector>
+	<algorithm>
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_AVR.h"
+	<avr/pgmspace.h>
+
+1414854755 c:\metal detecturd\sw\metaldt_ui\stdafx.h
+	"targetver.h"
+	<windows.h>
+	<stdlib.h>
+	<malloc.h>
+	<memory.h>
+	<tchar.h>
+
+1413835033 c:\metal detecturd\sw\metaldt_ui\targetver.h
+	<SDKDDKVer.h>
+
+1480779586 c:\metal detecturd\sw\metaldt_ui\metaldt__codeblocks.ino.h
+
+1454282694 c:\metal detecturd\sw\metaldt_ui\metaldt_ui_win.h
+	"resource.h"
+	<assert.h>
+	<vector>
+
+1480888463 c:\metal detecturd\sw\metaldt_ui\resource.h
+
+1480888463 c:\metal detecturd\sw\metaldt_ui\metaldt_ui_avr.h
+
+1480888463 source:c:\metal detecturd\sw\metaldt_ui\gfx_code\adafruit_st7735\adafruit_st7735.cpp
+	<SPI.h>
+	"Adafruit_ST7735.h"
+	<limits.h>
+	"pins_arduino.h"
+	"wiring_private.h"
+
+1445382202 c:\metal detecturd\sw\metaldt_ui\gfx_code\adafruit_st7735\adafruit_st7735.h
+	"Arduino.h"
+	"Print.h"
+	"WProgram.h"
+	<avr/pgmspace.h>
+
+1480888463 source:c:\metal detecturd\sw\metaldt_ui\metaldt__codeblocks.ino
+	<Arduino.h>
+	"metaldt__codeblocks.ino.h"
+	<EEPROM.h>
+	"GBAtext.h"
+	"RTTcolours.h"
+	<avr/interrupt.h>
+	<avr/io.h>
+	<SPI.h>
+	<Adafruit_ST7735.h>
+	"metaldt_UI_AVR.h"
+	"GBAtext.h"
+	"preprocessed_data_from_LTSPICE_METALDT_simulation.h"
+
+1416963028 c:\metal detecturd\sw\metaldt_ui\gbatext.h
+
+1445116413 c:\metal detecturd\sw\metaldt_ui\rttcolours.h
+
+1480888463 c:\metal detecturd\sw\metaldt_ui\preprocessed_data_from_ltspice_metaldt_simulation.h
+
+1480888463 source:c:\metal detecturd\sw\metaldt_ui\metaldt_ui_avr.cpp
+	<stdio.h>
+	<SPI.h>
+	<Adafruit_ST7735.h>
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_AVR.h"
+	"GBAtext.h"
+	"RTTcolours.h"
+	<avr/pgmspace.h>
+	<EEPROM.h>
+	"metaldt__code.cpp"
+
+1480888463 c:\metal detecturd\sw\metaldt_ui\metaldt__code.cpp
+	"preprocessed_data_from_LTSPICE_METALDT_simulation.h"
+	<algorithm>
+	"preprocessed_graph_pixels.cpp"
+
+1480888703 c:\metal detecturd\sw\metaldt_ui\preprocessed_graph_pixels.cpp
+
+1480888463 source:c:\metal detecturd\sw\metaldt_ui\preprocessed_data_from_ltspice_metaldt_simulation.cpp
+	"stdafx.h"
+	"metaldt__codeblocks.ino.h"
+	"preprocessed_data_from_LTSPICE_METALDT_simulation.h"
+	"metaldt_UI_WIN.h"
+	<vector>
+	"metaldt_UI_AVR.h"
+	<avr/pgmspace.h>
+
+1447408368 source:c:\metal detecturd\sw\metaldt_ui\rf24\rf24.cpp
+	"nRF24L01.h"
+	"RF24_config.h"
+	"RF24.h"
+
+1447408368 c:\metal detecturd\sw\metaldt_ui\rf24\nrf24l01.h
+
+1447408368 c:\metal detecturd\sw\metaldt_ui\rf24\rf24_config.h
+	"utility/includes.h"
+	"utility/ATTiny/RF24_arch_config.h"
+	"utility/LittleWire/RF24_arch_config.h"
+	"utility/Teensy/RF24_arch_config.h"
+	<Arduino.h>
+	<SPI_UART.h>
+	<SPI.h>
+	<stdint.h>
+	<stdio.h>
+	<string.h>
+	<SPI.h>
+	<avr/pgmspace.h>
+
+1447408368 c:\metal detecturd\sw\metaldt_ui\rf24\rf24.h
+	"RF24_config.h"
+	"utility/includes.h"
+	<LittleWireSPI/LittleWireSPI.h>
+	<DigitalIO.h>
+
+1480892063 source:c:\metal_detecturd\sw\metaldt_ui\gbatext.cpp
+	"stdafx.h"
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_WIN.h"
+	<vector>
+	<algorithm>
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_AVR.h"
+	<avr/pgmspace.h>
+
+1414858355 c:\metal_detecturd\sw\metaldt_ui\stdafx.h
+	"targetver.h"
+	<windows.h>
+	<stdlib.h>
+	<malloc.h>
+	<memory.h>
+	<tchar.h>
+
+1413838633 c:\metal_detecturd\sw\metaldt_ui\targetver.h
+	<SDKDDKVer.h>
+
+1724885789 c:\metal_detecturd\sw\metaldt_ui\metaldt__codeblocks.ino.h
+
+1454286294 c:\metal_detecturd\sw\metaldt_ui\metaldt_ui_win.h
+	"resource.h"
+	<assert.h>
+	<vector>
+
+1480892063 c:\metal_detecturd\sw\metaldt_ui\resource.h
+
+1480892063 c:\metal_detecturd\sw\metaldt_ui\metaldt_ui_avr.h
+
+1481467312 source:c:\metal_detecturd\sw\metaldt_ui\gfx_code\adafruit_st7735\adafruit_st7735.cpp
+	<SPI.h>
+	"Adafruit_ST7735.h"
+	<limits.h>
+	"pins_arduino.h"
+	"wiring_private.h"
+
+1445385802 c:\metal_detecturd\sw\metaldt_ui\gfx_code\adafruit_st7735\adafruit_st7735.h
+	"Arduino.h"
+	"Print.h"
+	"WProgram.h"
+	<avr/pgmspace.h>
+
+1484110796 source:c:\metal_detecturd\sw\metaldt_ui\metaldt__codeblocks.ino
+	<Arduino.h>
+	"metaldt__codeblocks.ino.h"
+	<EEPROM.h>
+	"GBAtext.h"
+	"RTTcolours.h"
+	<avr/interrupt.h>
+	<avr/io.h>
+	<SPI.h>
+	"../gfx_code/Adafruit_ST7735/Adafruit_ST7735.h"
+	"metaldt_UI_AVR.h"
+	"GBAtext.h"
+	"preprocessed_data_from_LTSPICE_METALDT_simulation.h"
+
+1416966628 c:\metal_detecturd\sw\metaldt_ui\gbatext.h
+
+1445120013 c:\metal_detecturd\sw\metaldt_ui\rttcolours.h
+
+1480975243 c:\metal_detecturd\sw\metaldt_ui\preprocessed_data_from_ltspice_metaldt_simulation.h
+
+1481233314 source:c:\metal_detecturd\sw\metaldt_ui\metaldt_ui_avr.cpp
+	<stdio.h>
+	<SPI.h>
+	"../gfx_code/Adafruit_ST7735/Adafruit_ST7735.h"
+	"metaldt__codeblocks.ino.h"
+	"metaldt_UI_AVR.h"
+	"GBAtext.h"
+	"RTTcolours.h"
+	<avr/pgmspace.h>
+	<EEPROM.h>
+	"metaldt__code.cpp"
+
+1724888141 c:\metal_detecturd\sw\metaldt_ui\metaldt__code.cpp
+	"preprocessed_data_from_LTSPICE_METALDT_simulation.h"
+	<algorithm>
+	"preprocessed_graph_pixels.cpp"
+
+1724888282 c:\metal_detecturd\sw\metaldt_ui\preprocessed_graph_pixels.cpp
+
+1480961811 source:c:\metal_detecturd\sw\metaldt_ui\preprocessed_data_from_ltspice_metaldt_simulation.cpp
+	"stdafx.h"
+
+1447411968 source:c:\metal_detecturd\sw\metaldt_ui\rf24\rf24.cpp
+	"nRF24L01.h"
+	"RF24_config.h"
+	"RF24.h"
+
+1447411968 c:\metal_detecturd\sw\metaldt_ui\rf24\nrf24l01.h
+
+1447411968 c:\metal_detecturd\sw\metaldt_ui\rf24\rf24_config.h
+	"utility/includes.h"
+	"utility/ATTiny/RF24_arch_config.h"
+	"utility/LittleWire/RF24_arch_config.h"
+	"utility/Teensy/RF24_arch_config.h"
+	<Arduino.h>
+	<SPI_UART.h>
+	<SPI.h>
+	<stdint.h>
+	<stdio.h>
+	<string.h>
+	<SPI.h>
+	<avr/pgmspace.h>
+
+1447411968 c:\metal_detecturd\sw\metaldt_ui\rf24\rf24.h
+	"RF24_config.h"
+	"utility/includes.h"
+	<LittleWireSPI/LittleWireSPI.h>
+	<DigitalIO.h>
+
+1371036702 u:\from_work_e\codeblocks\arduino\hardware\arduino\cores\arduino\arduino.h
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<avr/pgmspace.h>
+	<avr/io.h>
+	<avr/interrupt.h>
+	"binary.h"
+	"WCharacter.h"
+	"WString.h"
+	"HardwareSerial.h"
+	"pins_arduino.h"
+
+1362990550 u:\from_work_e\codeblocks\arduino\hardware\arduino\cores\arduino\binary.h
+
+1362990550 u:\from_work_e\codeblocks\arduino\hardware\arduino\cores\arduino\wcharacter.h
+	<ctype.h>
+
+1371036734 u:\from_work_e\codeblocks\arduino\hardware\arduino\cores\arduino\wstring.h
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<avr/pgmspace.h>
+
+1362990550 u:\from_work_e\codeblocks\arduino\hardware\arduino\cores\arduino\hardwareserial.h
+	<inttypes.h>
+	"Stream.h"
+	"USBAPI.h"
+
+1371036430 u:\from_work_e\codeblocks\arduino\hardware\arduino\cores\arduino\stream.h
+	<inttypes.h>
+	"Print.h"
+
+1362990550 u:\from_work_e\codeblocks\arduino\hardware\arduino\cores\arduino\print.h
+	<inttypes.h>
+	<stdio.h>
+	"WString.h"
+	"Printable.h"
+
+1362990550 u:\from_work_e\codeblocks\arduino\hardware\arduino\cores\arduino\printable.h
+	<new.h>
+
+1362990550 u:\from_work_e\codeblocks\arduino\hardware\arduino\cores\arduino\new.h
+	<stdlib.h>
+
+1362990550 u:\from_work_e\codeblocks\arduino\hardware\arduino\cores\arduino\usbapi.h
+
+1362990550 u:\from_work_e\codeblocks\arduino\hardware\arduino\variants\eightanaloginputs\pins_arduino.h
+	"../standard/pins_arduino.h"
+
+1362990550 u:\from_work_e\codeblocks\arduino\hardware\arduino\variants\standard\pins_arduino.h
+	<avr/pgmspace.h>
+
+1371036726 u:\from_work_e\codeblocks\arduino\hardware\arduino\cores\arduino\wiring_private.h
+	<avr/io.h>
+	<avr/interrupt.h>
+	<stdio.h>
+	<stdarg.h>
+	"Arduino.h"
+
+1371036702 c:\arduino\codeblocks\arduino\hardware\arduino\cores\arduino\arduino.h
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<avr/pgmspace.h>
+	<avr/io.h>
+	<avr/interrupt.h>
+	"binary.h"
+	"WCharacter.h"
+	"WString.h"
+	"HardwareSerial.h"
+	"pins_arduino.h"
+
+1362990550 c:\arduino\codeblocks\arduino\hardware\arduino\cores\arduino\binary.h
+
+1362990550 c:\arduino\codeblocks\arduino\hardware\arduino\cores\arduino\wcharacter.h
+	<ctype.h>
+
+1371036734 c:\arduino\codeblocks\arduino\hardware\arduino\cores\arduino\wstring.h
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<avr/pgmspace.h>
+
+1362990550 c:\arduino\codeblocks\arduino\hardware\arduino\cores\arduino\hardwareserial.h
+	<inttypes.h>
+	"Stream.h"
+	"USBAPI.h"
+
+1371036430 c:\arduino\codeblocks\arduino\hardware\arduino\cores\arduino\stream.h
+	<inttypes.h>
+	"Print.h"
+
+1362990550 c:\arduino\codeblocks\arduino\hardware\arduino\cores\arduino\print.h
+	<inttypes.h>
+	<stdio.h>
+	"WString.h"
+	"Printable.h"
+
+1362990550 c:\arduino\codeblocks\arduino\hardware\arduino\cores\arduino\printable.h
+	<new.h>
+
+1362990550 c:\arduino\codeblocks\arduino\hardware\arduino\cores\arduino\new.h
+	<stdlib.h>
+
+1362990550 c:\arduino\codeblocks\arduino\hardware\arduino\cores\arduino\usbapi.h
+
+1362990550 c:\arduino\codeblocks\arduino\hardware\arduino\variants\eightanaloginputs\pins_arduino.h
+	"../standard/pins_arduino.h"
+
+1362990550 c:\arduino\codeblocks\arduino\hardware\arduino\variants\standard\pins_arduino.h
+	<avr/pgmspace.h>
+
+1371036726 c:\arduino\codeblocks\arduino\hardware\arduino\cores\arduino\wiring_private.h
+	<avr/io.h>
+	<avr/interrupt.h>
+	<stdio.h>
+	<stdarg.h>
+	"Arduino.h"
+

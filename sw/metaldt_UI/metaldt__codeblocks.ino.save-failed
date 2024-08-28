@@ -1,0 +1,302 @@
+#include <Arduino.h>
+/*
+  Arduino TFT text example
+
+  This example demonstrates how to draw text on the
+  TFT with an Arduino. The Arduino reads the value
+  of an analog sensor attached to pin A0, and writes
+  the value to the LCD screen, updating every
+  quarter second.
+
+  This example code is in the public domain
+
+  Created 15 April 2013 by Scott Fitzgerald
+
+  http://arduino.cc/en/Tutorial/TFTDisplayText
+
+ */
+
+//#include <UTFT.h>  // Arduino LCD library
+#include <SPI.h>
+#include <Adafruit_GFX.h>    // Core graphics library
+#include <Adafruit_ST7735.h> // Hardware-specific library
+#include "metaldt_UI_AVR.h"
+#include "GBAtext.h"
+
+
+#define TFT_CS     10 // this is CS  on the TFT
+#define TFT_RST    0  // this is RST on the TFT (0=not used, reset is attached to the nano RST)
+#define TFT_DC     9  // this is A0  on the TFT
+                      // D13 is  SCK on the TFT
+                      // D10 is  CS  on the TFT
+
+Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS,  TFT_DC, TFT_RST);
+
+
+#define PIN_READ_HV_DIVIDER       A6
+
+#define PIN_PWM_SEEKING_LOWER     A4
+#define PIN_PWM_SEEKING_AT_LIMIT  A5
+#define PIN_PWM_SEEKING_HIGHER    A3
+#define PIN_metaldt__EVENT          A0
+
+#define PIN_metaldt__EVENT1         A1
+#define PIN_metaldt__EVENT2         A2
+
+
+#define PIN_INTERRUPT             2
+
+#define PIN_HV_PWM_PIN            3
+
+#define PIN_BUTTON                8
+
+#define PIN_SPI_1                 10
+#define PIN_SPI_2                 11
+#define PIN_SPI_3                 12
+#define PIN_SPI_4                 13
+
+#define PIN_metaldt__DIGITAL_INPUT1 4
+#define PIN_metaldt__DIGITAL_INPUT2 5
+#define PIN_metaldt__DIGITAL_INPUT3 6
+#define PIN_metaldt__DIGITAL_INPUT4 7
+
+
+void setPwmFrequency(int pin,int divisor){
+  byte mode;
+  if(pin==5 || pin==6 || pin==9 || pin==10){
+    switch(divisor){
+      case 1:    mode=0x01;break;
+      case 8:    mode=0x02;break;
+      case 64:   mode=0x03;break;
+      case 256:  mode=0x04;break;
+      case 1024: mode=0x05;break;
+      default: return;
+    }
+    if(pin==5 || pin==6){
+      TCCR0B=TCCR0B &0b11111000 |mode;
+    }else{
+      TCCR1B=TCCR1B &0b11111000 |mode;
+    }
+  }else if(pin==3 || pin==11) {
+    switch(divisor) {
+      case 1:    mode=0x01;break;
+      case 8:    mode=0x02;break;
+      case 32:   mode=0x03;break;
+      case 64:   mode=0x04;break;
+      case 128:  mode=0x05;break;
+      case 256:  mode=0x06;break;
+      case 1024: mode=0x07;break;
+      default: return;
+    }
+    TCCR2B=TCCR2B &0b11111000 |mode;
+  }
+}
+
+
+
+void TFT_init(){
+  tft.initR(INITR_BLACKTAB);   // initialize a ST7735S chip for 128x160 display
+  tft.fillScreen(ST7735_BLACK);
+
+//  // large block of text
+//  tft.fillScreen(ST7735_BLACK);
+//  tft.setCursor(0, 0);
+//  tft.setTextColor(ST7735_WHITE);
+//  tft.setTextWrap(true);
+//  tft.print("I want to .... ladyfds;flsda;flafllfdla;fd;flsafjdfhak ada in her **&^%^%& $$##$#$.");
+}
+
+
+
+u8 interrupt_triggered=30;
+u8 interrupt1_triggered=30;
+u8 interrupt2_triggered=30;
+
+#define INTERRUPT_TRIGGER LOW
+//#define INTERRUPT_TRIGGER FALLING
+
+void interrupt(){
+  detachInterrupt(0);
+  u8 i1=digitalRead(PIN_metaldt__DIGITAL_INPUT1);
+  u8 i2=digitalRead(PIN_metaldt__DIGITAL_INPUT2);
+  u8 i3=digitalRead(PIN_metaldt__DIGITAL_INPUT3);
+//  u8 i4=digitalRead(PIN_metaldt__DIGITAL_INPUT4);
+  interrupt_triggered=1;
+  digitalWrite(PIN_metaldt__EVENT, 128);
+//  analogWrite(PIN_metaldt__EVENT, 128);
+
+  if (i1==LOW){
+    counts[0]++;
+    digitalWrite(PIN_metaldt__EVENT1,HIGH);
+    interrupt1_triggered=2;
+    while(digitalRead(PIN_metaldt__DIGITAL_INPUT1)==LOW){};
+  }
+  if (i2==LOW){
+    counts[1]++;
+    digitalWrite(PIN_metaldt__EVENT2,HIGH);
+    interrupt2_triggered=2;
+    while(digitalRead(PIN_metaldt__DIGITAL_INPUT2)==LOW){};
+  }
+
+  attachInterrupt(0,interrupt,INTERRUPT_TRIGGER);
+}
+
+
+
+
+void setup() {
+  pinMode(PIN_metaldt__DIGITAL_INPUT1,INPUT);
+  pinMode(PIN_metaldt__DIGITAL_INPUT2,INPUT);
+  pinMode(PIN_metaldt__DIGITAL_INPUT3,INPUT);
+  pinMode(PIN_metaldt__DIGITAL_INPUT4,INPUT);
+  pinMode(PIN_PWM_SEEKING_LOWER    ,OUTPUT);
+  pinMode(PIN_PWM_SEEKING_AT_LIMIT ,OUTPUT);
+  pinMode(PIN_PWM_SEEKING_HIGHER   ,OUTPUT);
+  pinMode(PIN_metaldt__EVENT         ,OUTPUT);
+  pinMode(PIN_metaldt__EVENT1        ,OUTPUT);
+  pinMode(PIN_metaldt__EVENT2        ,OUTPUT);
+  pinMode(PIN_HV_PWM_PIN           ,OUTPUT);
+  pinMode(PIN_BUTTON               ,INPUT_PULLUP);
+  pinMode(PIN_INTERRUPT            ,INPUT_PULLUP);
+
+  attachInterrupt(0, interrupt, INTERRUPT_TRIGGER);
+  setPwmFrequency(PIN_HV_PWM_PIN,8);
+  setPwmFrequency(PIN_metaldt__EVENT,8);
+//  TCCR2B = TCCR2B & 0b11111000|2;
+  analogWrite(PIN_metaldt__EVENT, 128);
+//  Serial.begin(57600);
+//  Serial.print("RTT metaldt_");
+  TFT_init();
+  draw_background();
+//  delay(1500);
+
+}
+
+
+
+#define REQUIRED_GM_TUBE_HV 400.0
+
+#define TEST_V_MEASURD_AT_HV 4.22
+#define TEST_V_MEASURED_AT_DIVIDER 0.0175
+
+#define TARGET_VOLTAGE_AT_DIVIDER_FOR_AVR_TO_STABILISE (REQUIRED_GM_TUBE_HV/TEST_V_MEASURD_AT_HV*TEST_V_MEASURED_AT_DIVIDER)
+
+#define AVR_ANALOG_READING_GRANULARITY 0.0049
+
+#define AVR_ANALOG_DIVIDER_READING_DESIRED_VALUE ((u16)(TARGET_VOLTAGE_AT_DIVIDER_FOR_AVR_TO_STABILISE/AVR_ANALOG_READING_GRANULARITY))
+
+#define PWM_SCALING 5
+
+#define PWM_MAX_LIMIT (230<<PWM_SCALING)
+#define PWM_MIN_LIMIT (3<<PWM_SCALING)
+#define HV_SERVO_UPDATE_MILLISECONDS 50
+
+
+u32 pwm_scaled=PWM_MIN_LIMIT;
+
+void HV_servo(){
+  u16 val=analogRead(PIN_READ_HV_DIVIDER);
+  digitalWrite(PIN_PWM_SEEKING_LOWER, LOW);
+  digitalWrite(PIN_PWM_SEEKING_AT_LIMIT, LOW);
+  digitalWrite(PIN_PWM_SEEKING_HIGHER, LOW);
+  s16 delta=val-AVR_ANALOG_DIVIDER_READING_DESIRED_VALUE;
+  if (delta>0){
+    digitalWrite(PIN_PWM_SEEKING_LOWER, HIGH);
+    pwm_scaled-=1+delta;
+  }else if (delta<0){
+    digitalWrite(PIN_PWM_SEEKING_HIGHER, HIGH);
+    pwm_scaled+=1-delta;
+  }else{
+    digitalWrite(PIN_PWM_SEEKING_AT_LIMIT, HIGH);
+  }
+  if (pwm_scaled>PWM_MAX_LIMIT){
+    pwm_scaled=PWM_MAX_LIMIT;
+    digitalWrite(PIN_PWM_SEEKING_AT_LIMIT, HIGH);
+    digitalWrite(PIN_PWM_SEEKING_HIGHER, HIGH);
+  }
+  if (pwm_scaled<PWM_MIN_LIMIT){
+    digitalWrite(PIN_PWM_SEEKING_LOWER, HIGH);
+    digitalWrite(PIN_PWM_SEEKING_AT_LIMIT, HIGH);
+    pwm_scaled=PWM_MIN_LIMIT;
+  }
+
+  metaldt__tube_HV=val*REQUIRED_GM_TUBE_HV/AVR_ANALOG_DIVIDER_READING_DESIRED_VALUE;
+
+//  char rtt[32];
+//  sprintf(rtt,"V=%d\n",(u32)val);
+//  Serial.print(rtt);
+}
+
+
+
+void metaldt__processing_loop(){
+  u32 time_ms=millis();
+  static u32 last_millis=0;
+  if (time_ms-last_millis<10){
+    // dont hog processing
+    return;
+  }
+  last_millis=time_ms;
+  static u32 test_HV_servo_ms=time_ms;
+  if (time_ms-test_HV_servo_ms>=HV_SERVO_UPDATE_MILLISECONDS){
+    test_HV_servo_ms=time_ms;
+    HV_servo();
+    analogWrite(PIN_HV_PWM_PIN, pwm_scaled>>PWM_SCALING);
+  }
+
+  static u32 test_ms=time_ms;
+  if (time_ms-test_ms>=1000){
+    // accumulate counts for last second
+    test_ms=time_ms;
+    one_second_update_counter();
+  }
+
+  if (digitalRead(PIN_BUTTON)==LOW){
+    pwm_scaled=PWM_MIN_LIMIT;
+    digitalWrite(PIN_PWM_SEEKING_LOWER   , HIGH);
+    digitalWrite(PIN_PWM_SEEKING_AT_LIMIT, HIGH);
+    digitalWrite(PIN_PWM_SEEKING_HIGHER  , HIGH);
+    digitalWrite(PIN_metaldt__EVENT2       , HIGH);
+    digitalWrite(PIN_metaldt__EVENT1       , HIGH);
+    interrupt_triggered=50;
+    interrupt1_triggered=50;
+    interrupt2_triggered=50;
+  }
+
+  if (interrupt_triggered>0){
+    interrupt_triggered--;
+    if (interrupt_triggered==0){
+      digitalWrite(PIN_metaldt__EVENT,LOW);
+    }
+  }
+  if (interrupt1_triggered>0){
+    interrupt1_triggered--;
+    if (interrupt1_triggered==0){
+      digitalWrite(PIN_metaldt__EVENT1,LOW);
+    }
+  }
+  if (interrupt2_triggered>0){
+    interrupt2_triggered--;
+    if (interrupt2_triggered==0){
+      digitalWrite(PIN_metaldt__EVENT2,LOW);
+    }
+  }
+}
+
+
+
+void render(){
+  u32 time_ms=millis();
+  static u32 test_ms=time_ms;
+  if (time_ms-test_ms>=1000){
+    test_ms=time_ms;
+    drawit();
+  }
+}
+
+
+
+void loop(){
+  metaldt__processing_loop();
+  render();
+}

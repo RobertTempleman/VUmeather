@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "metaldt_UI", "metaldt_UI\metaldt_UI.vcxproj", "{718A2FB7-1AA0-49B9-9A5A-36519883D90D}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = metaldt_UI\\metaldt_UI.vcxproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = metaldt_UI\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{718A2FB7-1AA0-49B9-9A5A-36519883D90D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{718A2FB7-1AA0-49B9-9A5A-36519883D90D}.Debug|Win32.Build.0 = Debug|Win32
+		{718A2FB7-1AA0-49B9-9A5A-36519883D90D}.Release|Win32.ActiveCfg = Release|Win32
+		{718A2FB7-1AA0-49B9-9A5A-36519883D90D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

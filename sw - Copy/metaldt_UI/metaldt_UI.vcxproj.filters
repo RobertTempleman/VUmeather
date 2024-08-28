@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ATMEGA">
+      <UniqueIdentifier>{9eeba890-d4c6-4c4c-83c1-ca57066a50d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ATMEGA\codeborks">
+      <UniqueIdentifier>{b827a898-ecb6-430e-9e72-3db18301d4b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="winstuff">
+      <UniqueIdentifier>{67f4fe93-b88b-41c1-a870-5d9d72bbbbeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ATMEGA\GFX">
+      <UniqueIdentifier>{faedbf95-b584-4d66-9f80-88b5aa0c3f6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RF24">
+      <UniqueIdentifier>{0581732e-aef9-4f95-9575-af8fe6ed6046}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GBAtext.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RTTcolours.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="metaldt_UI_WIN.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>winstuff</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>winstuff</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>winstuff</Filter>
+    </ClInclude>
+    <ClInclude Include="metaldt_UI_AVR.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gfx_code\Adafruit_ST7735\Adafruit_ST7735.h">
+      <Filter>ATMEGA\GFX</Filter>
+    </ClInclude>
+    <ClInclude Include="metaldt__codeblocks.ino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="comms_code\VirtualWire\VirtualWire.h">
+      <Filter>ATMEGA</Filter>
+    </ClInclude>
+    <ClInclude Include="preprocessed_data_from_LTSPICE_METALDT_simulation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RF24\nRF24L01.h">
+      <Filter>RF24</Filter>
+    </ClInclude>
+    <ClInclude Include="RF24\printf.h">
+      <Filter>RF24</Filter>
+    </ClInclude>
+    <ClInclude Include="RF24\RF24.h">
+      <Filter>RF24</Filter>
+    </ClInclude>
+    <ClInclude Include="RF24\RF24_config.h">
+      <Filter>RF24</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GBAtext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RTTcolours.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="metaldt__code.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="metaldt_UI_AVR.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="metaldt_UI_WIN.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>winstuff</Filter>
+    </ClCompile>
+    <ClCompile Include="gfx_code\Adafruit_ST7735\Adafruit_ST7735.cpp">
+      <Filter>ATMEGA\GFX</Filter>
+    </ClCompile>
+    <ClCompile Include="gfx_code\Adafruit-GFX\glcdfont.c">
+      <Filter>ATMEGA\GFX</Filter>
+    </ClCompile>
+    <ClCompile Include="comms_code\VirtualWire\VirtualWire.cpp">
+      <Filter>ATMEGA</Filter>
+    </ClCompile>
+    <ClCompile Include="preprocessed_data_from_LTSPICE_METALDT_simulation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="preprocessed_graph_pixels.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RF24\RF24.cpp">
+      <Filter>RF24</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="metaldt_UI.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="metaldt_UI.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="metaldt__codeblocks.ino">
+      <Filter>ATMEGA</Filter>
+    </None>
+    <None Include="AD_metaldt_\build\lib_nano328_16.a">
+      <Filter>ATMEGA\codeborks</Filter>
+    </None>
+    <None Include="AD_metaldt_\build\core_nano328_16.a">
+      <Filter>ATMEGA\codeborks</Filter>
+    </None>
+    <None Include="AD_metaldt_\metaldt_.depend">
+      <Filter>ATMEGA\codeborks</Filter>
+    </None>
+    <None Include="AD_metaldt_\metaldt_.layout">
+      <Filter>ATMEGA\codeborks</Filter>
+    </None>
+    <None Include="AD_metaldt_\metaldt_.cbp">
+      <Filter>ATMEGA</Filter>
+    </None>
+    <None Include="AD_metaldt_\metaldt_.cscope_file_list">
+      <Filter>ATMEGA\codeborks</Filter>
+    </None>
+  </ItemGroup>
+</Project>

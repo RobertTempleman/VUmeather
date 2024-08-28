@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="metaldt_" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Arduino Nano (328)">
+				<Option output="build/metaldt__${BOARD_ID}.elf" prefix_auto="1" extension_auto="0" />
+				<Option object_output="build" />
+				<Option type="1" />
+				<Option compiler="avrgcc" />
+				<Compiler>
+					<Add option="-x c++" />
+					<Add option="-mmcu=$(MCU)" />
+					<Add option="-DF_CPU=16000000L" />
+					<Add option="-D__AVR_ATmega328P__" />
+					<Add option="-O2" />
+					<Add option="-Os" />
+					<Add directory="$(ARDUINO_DIR)/hardware/arduino/cores/arduino" />
+					<Add directory="$(ARDUINO_DIR)/libraries" />
+					<Add directory="$(ARDUINO_DIR)/hardware/arduino/variants/eightanaloginputs" />
+				</Compiler>
+				<Linker>
+					<Add option="-mmcu=$(MCU)" />
+					<Add option='&quot;$(PROJECT_DIR)${TARGET_OUTPUT_DIR}/lib_${BOARD_ID}_${MCU_CLOCK}.a&quot;' />
+					<Add option='&quot;$(PROJECT_DIR)${TARGET_OUTPUT_DIR}/core_${BOARD_ID}_${MCU_CLOCK}.a&quot;' />
+					<Add option="-s" />
+				</Linker>
+				<ExtraCommands>
+					<Add before='$(TARGET_COMPILER_DIR)ArduinoUploader &quot;$(PROJECT_DIR).&quot; $(BOARD_ID) - $(MCU_CLOCK) 0 &quot;$(PROJECT_DIR)${TARGET_OUTPUT_DIR}/lib_${BOARD_ID}_${MCU_CLOCK}.a&quot; &quot;$(PROJECT_DIR)${TARGET_OUTPUT_DIR}/core_${BOARD_ID}_${MCU_CLOCK}.a&quot;' />
+					<Add after='avr-objcopy -O ihex -R .eeprom -R .eesafe &quot;$(TARGET_OUTPUT_FILE)&quot; &quot;$(TARGET_OUTPUT_FILE).hex&quot;' />
+					<Add after='avr-objcopy --no-change-warnings -j .eeprom --change-section-lma .eeprom=0 -O ihex &quot;$(TARGET_OUTPUT_FILE)&quot; &quot;$(TARGET_OUTPUT_FILE).eep.hex&quot;' />
+					<Add after='avr-size --mcu=$(MCU) --format=avr &quot;$(TARGET_OUTPUT_FILE)&quot;' />
+				</ExtraCommands>
+				<Environment>
+					<Variable name="BOARD" value="Arduino Nano (328)" />
+					<Variable name="BOARD_ID" value="nano328" />
+					<Variable name="MCU" value="atmega328p" />
+					<Variable name="MCU_CLOCK" value="16" />
+					<Variable name="UPLOAD_BAUDRATE" value="57600" />
+					<Variable name="UPLOAD_PORT" value="" />
+				</Environment>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add directory="." />
+		</Compiler>
+		<Unit filename="../../../../Program Files (x86)/Arduino/libraries/EEPROM/EEPROM.cpp" />
+		<Unit filename="../../../../Program Files (x86)/Arduino/libraries/EEPROM/EEPROM.h" />
+		<Unit filename="../../../../Program Files (x86)/Arduino/libraries/SPI/SPI.cpp" />
+		<Unit filename="../../../../Program Files (x86)/Arduino/libraries/SPI/SPI.h" />
+		<Unit filename="../GBAtext.cpp" />
+		<Unit filename="../GBAtext.h" />
+		<Unit filename="../RF24/RF24.cpp" />
+		<Unit filename="../RF24/RF24.h" />
+		<Unit filename="../RF24/RF24_config.h" />
+		<Unit filename="../RTTcolours.h" />
+		<Unit filename="../gfx_code/Adafruit_ST7735/Adafruit_ST7735.cpp" />
+		<Unit filename="../gfx_code/Adafruit_ST7735/Adafruit_ST7735.h" />
+		<Unit filename="../metaldt_UI_AVR.cpp" />
+		<Unit filename="../metaldt_UI_AVR.h" />
+		<Unit filename="../metaldt__code.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../metaldt__codeblocks.ino">
+			<Option compile="1" />
+			<Option link="1" />
+		</Unit>
+		<Unit filename="../metaldt__codeblocks.ino.h" />
+		<Unit filename="../preprocessed_data_from_LTSPICE_METALDT_simulation.cpp" />
+		<Unit filename="../preprocessed_data_from_LTSPICE_METALDT_simulation.h" />
+		<Extensions>
+			<code_completion>
+				<search_path add="libraries\Adafruit-GFX" />
+				<search_path add="libraries\Adafruit_ST7735" />
+				<search_path add="..\..\metaldt_UI" />
+				<search_path add="..\comms_code\VirtualWire" />
+			</code_completion>
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
