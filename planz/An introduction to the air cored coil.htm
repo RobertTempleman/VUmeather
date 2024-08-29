@@ -1,0 +1,734 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en"><head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="keywords" content="inductor, self inductance, choke, winding, 
+		air coil, wire, calculate, compute, formula, determine, find">
+	<link rel="stylesheet" href="An%20introduction%20to%20the%20air%20cored%20coil_files/styleA.css" type="text/css">
+	<meta name="generator" content="BBEdit 9.3">
+	<style type="text/css">
+		br.lclear {clear: left}
+	</style>
+	<title> An introduction to the air cored coil</title>
+</head>
+<body class="soothe">
+
+<h1 id="top"> An introduction to the air cored coil</h1>
+
+<ul>
+     <li> <a href="#wht"> What is an air core coil?</a></li>
+     <li> <a href="#why"> Do you need an air coil?</a></li>
+     <li> <a href="#slc"> Single layer coils.</a></li>
+     <li> <a href="#mly"> Multi layer coils.</a></li>
+     <li> <a href="#flx"> Flux density in an air coil.</a></li>
+</ul>
+
+<p>
+About your browser: if this character '×' does not look like a
+multiplication sign, or you see lots of question marks '?' or symbols
+like '<img src="An%20introduction%20to%20the%20air%20cored%20coil_files/no_char.gif" alt="Rectangular box symbol">' or 
+sequences like '&amp;cannot;' then please <a href="http://info.ee.surrey.ac.uk/Workshop/browser/index.html" title="Excuses for incorrect characters"> accept my apologies</a>.
+</p><p>
+
+See also ...<br>
+[Producing<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/index.html"><big>↑</big> wound components</a>]
+[A guide to the <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html">terminology</a> used in the science of magnetism]
+[<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/power_loss.html">Power loss</a> in wound components]
+[The <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/force.html">force</a> produced by a magnetic field]
+[<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/Faraday/index.html">Faraday's law</a>]
+[<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/air/area.xhtml">Flux in a multilayer coil</a>]
+</p>
+<hr>
+<p>
+<br><br><br><br>
+</p>
+
+
+
+
+<h2 id="wht"> What is an air core coil?</h2>
+<p>
+We'll use the term 'air core coil' to describe an inductor that does not
+depend upon a <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/mu/index.html#ferro" title="Ferromagnets described"> ferromagnetic material</a> to achieve its
+specified <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#ind" title="Inductance defined"> inductance</a>.  This covers the cases where there
+really is just air inside as well as windings upon a different insulator
+such as bakelite, glass or PTFE etc.
+</p>
+ 
+<p>
+[<a href="#top"><big>↑</big> Top</a> of page]
+</p>
+
+
+
+<h2 id="why"> Do you need an air coil?</h2>
+<p>
+What are the advantages of an air core coil?  
+</p>
+
+<ul>
+    <li>Its <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#ind">inductance</a> is unaffected by the 
+	current it carries.  This contrasts with the situation with coils 
+	using <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/mu/index.html#ferro" title="Ferromagnets described">
+	ferromagnetic</a> cores whose inductance 
+	tends to reach a peak at moderate <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#strength"> field 
+	strengths</a> before dropping towards zero as <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/mu/index.html#sat" title="Saturation described"> 
+	saturation</a> approaches.  Sometimes non-linearity in the <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/mu/index.html#bhcurve" title="Magnetization curves explained"> 
+	magnetization curve</a> can be tolerated; for example in switching
+	converters.  In circuits such as audio cross over networks in hi-fi
+	speaker systems you must avoid distortion; then you need an air
+	coil.  Most radio transmitters rely on air coils to prevent the
+	production of harmonics.
+
+    </li><li>Air coils are also free of the <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/power_loss.html">'iron losses' </a> which affect ferromagnetic
+    cores.  As frequency is increased this advantage becomes
+    progressively more important. You obtain better <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/power_loss.html#q">Q-factor</a>, greater efficiency, greater
+    power handling, and less distortion.
+
+    </li><li>Lastly, air coils can be designed to perform at frequencies
+    as high as 1 Ghz.  Most ferromagnetic cores tend to be rather lossy
+    above 100 MHz.
+	</li>
+</ul>
+
+<p>
+And the 'downside'?
+</p>
+
+<ul>
+    <li> Without a high permeability core you must have more and/or
+    larger turns to achieve a given inductance value.  More turns means
+    larger coils, lower <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/index.html#self">self-resonance</a> and
+    higher <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/power_loss.html#copper">copper loss</a>.  At higher
+    frequencies you generally don't need high inductance, so this is
+    then less of a problem.
+	</li><li> 
+    Greater stray field radiation and pickup.  With the closed magnetic 
+	paths used in cored inductors radiation is much less serious.  As the 
+	diameter increases towards a wavelength (lambda = c / f), loss due to 
+    electromagnetic radiation will become significant.  <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/index.html#bib">Balanis</a> has the gory details.  You may be 
+	able to reduce this problem by enclosing the coil in a screen, or by 
+	mounting it at right angles to other coils it may be coupling with.
+	<p>
+	You may be using an air cored coil not because you require a circuit
+	element with a specific inductance<i> per se</i> but because your
+	coil is used as a proximity sensor, loop antenna, induction heater,
+	Tesla coil,  electromagnet,<a href="http://homepage.ntlworld.com/clarcana/proj/magnetometer/index.html" title="Magnetometer project"> magnetometer head</a> or deflection
+	yoke etc.  Then an<a href="#flx"> external field</a> may be what you
+	want.
+	</p> 
+	</li>
+</ul>
+
+
+<p>
+[<a href="#top"><big>↑</big> Top</a> of page]
+</p>
+
+
+
+
+<h2 id="slc"> The single layer coil</h2>
+<p>
+<img src="An%20introduction%20to%20the%20air%20cored%20coil_files/air_coil.gif" class="ralign" alt="An air core coil">
+A single layer coil has two advantages.  Firstly, like all air core coils,
+it is free from <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/power_loss.html">'iron losses'</a>  and the <a href="#why">non-linearity</a> mentioned above.  Secondly, single layer coils have 
+the additional advantage of low self-capacitance and thus high <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/index.html#self">self-resonant</a> frequency.  These coils are mostly used 
+above about 3 Mhz.
+</p><p>
+In the simple case of 
+a single layer solenoidal coil the inductance may be estimated as follows 
+(<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/index.html#bib" title="Bibliographical reference to Wheeler's formula">Wheeler</a>) -
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+		L = 0.001 N<sup>2</sup>r<sup>2</sup> / (228r + 254l) 
+	</div>
+	<div class="EqnRef"> Equation ACS</div>
+</div>
+<p>
+<br class="lclear">
+<br>
+where  L is the inductance in henrys, r is the coil radius in metres, l
+is the coil length in metres (&gt;0.8r) and N is the number of turns.
+</p><p>
+This formula applies at 'low' frequencies.  At frequencies high enough for 
+<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/power_loss.html#skin">skin effect</a> to occur a correction of up to 
+about -2% is made.
+</p><p>
+To construct a self-supporting air cored coil take a length of plain 1 
+millimetre diameter copper wire and hold one end in a bench vice.  Take the 
+other end in a pair of pliers and pull until the wire has stretched 
+slightly - this will straighten it.  Using a 5 millimetre diameter drill 
+bit wrap the wire around it until enough turns have been applied.  Using 
+'long nosed' pliers bend the ends of the coil to get them into a radial 
+position.
+</p><p>
+Small reductions in the inductance obtained can be achieved by pulling 
+the turns apart slightly.  This will also reduce <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/index.html#self"> 
+self-resonance</a>.  Other combinations of wire and coil diameter may be 
+tried but best results are usually obtained when the length of the coil is 
+the same as its diameter.
+</p><p>
+This property also leads to a disadvantage of the air cored coil: 
+microphony.  If you need good frequency stability in the presence of 
+vibration then wind the coil on a support made from a suitable plastic or 
+ceramic former.
+</p><p>
+Software capable of calculating the inductance of a single layer coil is 
+available at <a href="http://www.qsl.net/k6mlo/coilpage.html" title="Inductance software from K6MLO">http://www.qsl.net/k6mlo/coilpage.html</a>
+</p><p>
+[<a href="#top"><big>↑</big> Top</a> of page]
+</p>
+
+
+
+<h2 id="mly"> The multi layer coil</h2>
+<p>
+Figure 1 below shows a multi layer air cored coil wound on a circular coil 
+former or bobbin.
+</p><p>
+<img src="An%20introduction%20to%20the%20air%20cored%20coil_files/mult_layer_air_coil.png" class="ralign" alt="The dimensions of an air coil.">
+</p><p>
+This type of winding is very common because it's simple to construct
+with a <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/winders/index.html" title="Using the TSU winding machine">winding machine</a> and a mandrel. We'll
+consider it in some detail.  The first question is this: if you have a
+fixed length of wire then what dimensions of the winding give the
+greatest <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#ind"> inductance</a>?  Put another way,
+what is the most efficient shape?
+</p><p>
+The ratio of the winding depth to length, which is c/b, needs to be close
+to unity; so the winding should have a square cross section.  This makes
+sense because only with the square is the average distance between turns at
+a minimum (a circular cross section would be even better, but that is hard
+to construct).  Keeping the turns close together maintains a high level of
+magnetic coupling ('<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#link">flux linkages</a>') between
+them, and so the general rule that the inductance of a coil increases with
+the square of the number of turns is maintained.<br class="ClrImg">
+</p><p>
+OK, now what about the mean radius of the turns: dimension a ?
+<img src="An%20introduction%20to%20the%20air%20cored%20coil_files/Brooks_ratio.png" class="ralign" alt="Optimum shape for a multi layer coil">
+</p><p>
+In the adjacent Fig. 2 you see three coils in cross section.  Each uses the
+same length of wire but the diameter of the coil varies.  The inductance of
+any one turn is linearly proportional to its diameter; so you want a large
+diameter to get the most inductance.  Also you need all turns in the
+winding to be as close as possible to all the others.  The coil on the left
+fulfills these requirements, but it has a problem because, in making the
+diameter large, you don't have sufficient wire to give it many turns. 
+Since the inductance of the winding as a whole varies as the square of the
+number of turns the left hand coil won't have high L.
+</p><p>
+The coil on the right does have a high number of turns, but it isn't
+optimum for two reasons.  The diameter of each turn is small (particularly
+those near the centre of the coil) which leads to a low inductance per
+turn.  Worse, the distance between turns separated by the diagonals of the
+winding cross section is large.  This leads to weak coupling between them
+(lower <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#link">flux linkage</a>) and a failure of the
+N<sup>2</sup> relationship with coil inductance.
+</p><p>
+Can you anticipate a punch line?  Brooks, who wrote a paper in 1931, 
+calculated that the ideal value for the mean radius is very close to 3c/2. 
+We call a coil having these dimensions a <i>Brooks coil</i>.  It's worth 
+emphasising that the Brooks ratio is not critical.  You can have a coil which 
+deviates from it quite significantly before L falls off very much.
+Also, you may have other considerations than the inductance alone.
+</p><p>
+If we let S<sub>1</sub> = (c/2a)<sup>2</sup> then the inductance, in
+henrys, of any of our three coils can be approximated by
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+		L = 4×10<sup>-7</sup>πa
+		N<sup>2</sup>((0.5+S<sub>1</sub>/12)ln(8/S<sub>1</sub>)
+		-0.84834+0.2041S<sub>1</sub>)
+	</div>
+	<div class="EqnRef"> Equation ACA</div>
+</div>
+<p>
+<br class="clear">
+where a is the mean radius of the winding in metres.
+</p><p>
+Example: If the mean radius is 2.4 cm, the width is 9mm and N is 350 
+then L = 6.977 mH.
+</p><p>
+If we have a proper Brooks coil then the formula above boils down to
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+L = 1.6994×10<sup>-6</sup>aN<sup>2</sup>&nbsp;&nbsp;henrys
+	</div>
+	<div class="EqnRefKey"> Equation ACB</div>
+</div>
+<p>
+<br class="clear">
+Example: If the mean radius is 2.4 cm and N is 350 then L = 4.996 mH.
+</p>
+
+
+<p>
+[<a href="#top"><big>↑</big> Top</a> of page]
+</p>
+
+
+
+
+<h2 id="flx"> Flux density in an air coil</h2>
+
+
+<ul>
+     <li> <a href="#wdi"> When the density is important</a></li>
+     <li> <a href="#bse"> The Biot-Savart equation</a></li>
+     <li> <a href="#bsl"> Biot-Savart solves a current loop</a></li>
+     <li> <a href="#fsl"> The field in a solenoid</a></li>
+</ul>
+
+<p>
+[<a href="#top"><big>↑</big> Top</a> of page]
+</p>
+
+
+<h3 id="wdi"> When the density is important</h3>
+<p>
+Sometimes the purpose of an air coil is not to possess inductance but to
+create a region of space having a definite <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#fdens" title="Magnetic flux density defined">magnetic flux density</a>.  A well
+known example of this is the deflection coils placed around a cathode ray tube 
+where the direction of the electron beam is controlled by the current driven 
+through the coils.  Outlined below are methods by which you can relate 
+the strength of the field to the coil current.  When you know the field 
+at all points around a coil then you can also find its inductance.
+</p>
+
+<h3 id="bse"> The Biot-Savart equation</h3>
+<p>
+<img src="An%20introduction%20to%20the%20air%20cored%20coil_files/BiotSavart.png" class="ralign" alt="Fig. FCE: The field due to a current element."> You can see in these
+web pages examples of the <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#strength">duality between
+the electric world and the magnetic world</a>.  There is, though, a
+fundamental distinction: a point electric charge in a vacuum produces a
+symmetrical field whereas a 'point magnetic charge' which we will call a
+<i>current element</i> has a direction of flow which leads to an
+asymmetry in field distribution along that direction.
+</p><p>
+An important result of the work carried out by <a href="http://www-groups.dcs.st-and.ac.uk/%7Ehistory/Mathematicians/Ampere.html" title="Biography of Andy Ampere">
+André Ampère</a> is the equation which 
+is refered to as the <a href="http://www-history.mcs.st-andrews.ac.uk/history/Mathematicians/Biot.html" title="Biography of John Biot"> Biot-Savart</a>. 
+This gives the field at any point surrounding a current element. Such an
+element should have negligible length, ds, and negligible diameter (see
+figure FCE).
+<br class="clear">
+</p>
+<div class="maths">
+	<div class="EqnRelation" id="ACB">
+		d<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#fdens" title="Magnetic flux density defined">B</a> = 
+		<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/mu/index.html#mu0" title="Permeability of a vacuum">μ<sub>0</sub></a> 
+		I ds sinθ / (4π r<sup>2</sup>) &nbsp; teslas
+	</div>
+	<div class="EqnRefKey"> Biot-Savart equation</div>
+</div>
+<p>
+<br class="clear">
+This shows that the magnitude of the field falls with the square of the
+distance, r, from the current element and also with the sine of the angle
+, θ, subtended to the current direction.  The direction of the magnetic
+field is at a right angle to the current direction and also at a right
+angle to the line r.  The 'sense' of the field vector is right handed or
+clockwise looking along the direction of current flow.
+</p><p>
+At any point along the circular field line labeled F in figure FCE a tangent 
+to it has a direction fulfilling the requirements just given.  Imagine a 
+set of such lines surrounding the current element, spaced in accordance 
+with the expression for dB.  Lessen the strain on your imagination by looking 
+at a representation of the function <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/BSavartField/index.html">
+sin(θ)/r<sup>2</sup></a> as an intensity plot. 
+</p><p>
+You might complain that the Biot-Savart equation doesn't seem to be buying us 
+very much: an isolated current element is an imposibility in practice and real 
+coils use wires which may be very thick.  What saves the day in the case of air 
+coils is the principle of superposition.  Without a ferromagnetic core to spoil 
+the linearity of the system we can simply divide the actual current flow up 
+into any number of smaller regions and then sum, or integrate, the individual 
+fields to obtain the total flux density.
+</p>
+
+<h3 id="bsl"> Biot-Savart solves a current loop</h3>
+<p>
+Let's apply <a href="#bse">Biot-Savart</a> to a single turn circular loop
+and derive a formula for the <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#fdens" title="Magnetic flux density defined">flux density</a> at any point along the
+axis. We'll assume that the diameter of the wire is negligible in
+comparison with the diameter of the loop - in the terminology this is
+known as a <i>current filament</i>.
+</p><p>
+<img src="An%20introduction%20to%20the%20air%20cored%20coil_files/loop_field.png" class="ralign" alt="The field due to a current loop"> 
+In figure FLP we see the loop, of radius a, in cross section and we want
+the flux density at the point P<sub>1</sub> on the loop axis at a
+distance r from the conductor.  We start by considering the contribution
+to the field made by a current element at P<sub>2</sub>.  
+The figure shows a P<sub>1</sub> which happens to be quite far from the loop.  
+ψ is rather small and the field vector (B<sub>T</sub>, 
+shown in blue) is swinging up towards the radial direction. 
+You can resolve B<sub>T</sub> into two components: B<sub>R</sub>, shown in red 
+and  B<sub>A</sub>, shown in green. We can disregard the radial component, 
+B<sub>R</sub>, because of the symmetry of the loop: it is going to be cancelled 
+by the field generated by the current element on the opposite side of the loop 
+at P<sub>3</sub>.  We are left with just the axial component (that we need to 
+find): B<sub>A</sub>.  Its magnitude will be
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+	<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#fdens" title="Magnetic flux density defined">
+		B</a><sub>A</sub> = 
+	<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#fdens" title="Magnetic flux density defined">
+		B</a><sub>T</sub> sinψ 
+	</div>
+	<div class="EqnRef"> Equation ACC</div>
+</div>
+<p>
+<br class="clear">
+The Biot-Savart equation gives us dB<sub>T</sub> so we can combine the two to 
+get
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+dB<sub>A</sub> =  μ<sub>0</sub> I ds sinθ sinψ / (4π r<sup>2</sup>)
+	</div>
+	<div class="EqnRef"> Equation ACD</div>
+</div>
+<p>
+<br class="clear">
+Clearly, any line (such as r) which joins P<sub>1</sub> to the conductor
+will intersect the direction of current flow at a right angle.  This means
+that sin(θ) in the Biot-Savart equation will be 1.0.  At points off
+axis this won't always be the case and the maths gets harder.
+</p> 
+<div class="maths">
+	<div class="EqnRelation">
+		dB<sub>A</sub> =  μ<sub>0</sub> I ds sinψ / (4π r<sup>2</sup>)
+	</div>
+	<div class="EqnRef"> Equation ACE</div>
+</div>
+<p>
+<br class="clear">
+Now, all we have here is the field due to the single current element 
+at P<sub>2</sub>, but we need the total field due to all the elements around 
+the loop.  Fortunately, because of the symmetry all the elements contribute 
+the same as P<sub>2</sub>, so to do the 'integration' we need only multiply 
+by the path length around the loop: 2πa  - 
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+B<sub>A</sub> =  a μ<sub>0</sub> I sinψ / (2 r<sup>2</sup>)
+	</div>
+	<div class="EqnRef"> Equation ACF</div>
+</div>
+<p>
+<br class="clear">
+Substituting r = a / sinψ -
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+B<sub>A</sub> =  a μ<sub>0</sub> I sinψ / (2 (a / sinψ)<sup>2</sup>)
+	</div>
+	<div class="EqnRef"> Equation ACG</div>
+</div>
+<p>
+<br class="clear">
+so
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+B<sub>A</sub> =  μ<sub>0</sub> I sin<sup>3</sup>ψ / (2a)
+	</div>
+	<div class="EqnRef"> Equation ACH</div>
+</div>
+<p>
+<br class="clear">
+And if the coil is multi-turn then superposition again gives
+</p>
+<div class="maths">
+	<div class="EqnRelation" id="FMC">
+		<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#fdens" title="Magnetic flux density defined">B</a><sub>A</sub> =
+		<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/mu/index.html#mu0" title="Permeability of a vacuum">μ<sub>0</sub></a> 
+		<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#mmf" title="Magneto motive force defined">
+			F<sub>m</sub></a> 
+			sin<sup>3</sup>ψ / (2a)
+	</div>
+	<div class="EqnRef"> Equation FMC</div>
+</div>
+<p>
+<br class="clear">
+where F<sub>m</sub> is the <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#mmf" title="Magneto motive force defined">magneto motive force</a>: N × I.
+It may be more convenient to specify the field by an equivalent
+expression in terms of the axial distance, x, of P1 from the centre of
+the coil -
+</p>
+<div class="maths">
+	<div class="EqnRelation" id="ACU">
+		<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#fdens" title="Magnetic flux density defined">B</a><sub>A</sub> =
+		<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/mu/index.html#mu0" title="Permeability of a vacuum">μ<sub>0</sub></a> 
+		<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#mmf" title="Magneto motive force defined">
+			F<sub>m</sub></a> 
+			a<sup>2</sup> / (2(a<sup>2</sup> + 
+			x<sup>2</sup>)<sup>3/2</sup>)
+	</div>
+	<div class="EqnRef"> Equation ACU</div>
+</div>
+<p>
+<br class="clear">
+Observe that, if x is large in comparison with a, the field is in
+inverse proportion to x<sup>3</sup>.  This is a well known result for
+the 'far field of a magnetic dipole'.  As the diameter of the loop grows
+the field at some specific large x will increase whilst the field near
+the centre of the loop decreases. Equation ACU is easily differentiated
+to obtain the gradient -
+</p>
+<div class="maths">
+	<div class="EqnRelation" id="ACV">
+		d<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#fdens" title="Magnetic flux density defined">B</a><sub>A</sub>/dx =
+		<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/mu/index.html#mu0" title="Permeability of a vacuum">μ<sub>0</sub></a> 
+		<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#mmf" title="Magneto motive force defined">
+			F<sub>m</sub></a> 
+			(-3 / 2) a<sup>2</sup> x (a<sup>2</sup> + 
+			x<sup>2</sup>)<sup>-5/2</sup>
+	</div>
+	<div class="EqnRef"> Equation ACV</div>
+</div>
+<p>
+<br class="clear">
+This function has a minimum at x = a / 2.  At this point a magnetic particle
+is attracted most strongly.  The gradient here is -
+</p>
+<div class="maths">
+	<div class="EqnRelation" id="ACW">
+		d<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#fdens" title="Magnetic flux density defined">B</a><sub>A</sub>/dx =
+		-24 √5
+		<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/mu/index.html#mu0" title="Permeability of a vacuum"> μ<sub>0</sub></a> 
+		<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#mmf" title="Magneto motive force defined">
+			F<sub>m</sub></a> /
+			(125 a<sup>2</sup>)
+	</div>
+	<div class="EqnRef"> Equation ACW</div>
+</div>
+<p>
+<br class="clear">
+</p>
+
+
+
+<h3 id="fsl"> The field in a solenoid</h3>
+<p>
+It's not too difficult to extend the <a href="#FMC">above result</a> for a
+current loop to solve the field at any point on the axis of a solenoidal
+coil (shown in cross section in figure FSD).  As usual, I'm going to use a
+combination of 'hand waving' arguments and integral calculus.  If you just
+want the bottom line then see <a href="#FDS">equation FDS</a>.
+</p>
+<table id="prm" class="ordnry">
+<caption><big> Solenoid parameters</big></caption>
+<tbody><tr><th> Symbol</th><th> Purpose</th></tr>
+<tr><td> N</td><td> The total number of turns in the solenoid</td></tr>
+<tr><td> b</td><td> The length of the solenoid (metres)</td></tr>
+<tr><td> a</td><td> The radius of the solenoid (metres)</td></tr>
+<tr><td> P1</td><td> The point on the axis at which we need to <br>find the 
+	<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#fdens" title="Magnetic flux density defined">
+	flux density: B</a></td></tr>
+<tr><td> z</td><td> An arbitrary distance along the axis from P1</td></tr>
+<tr><td> ψ</td><td> The angle subtended at P1 by the axis and a<br> point at the 
+top of the winding at z</td></tr>
+<tr><td> ψ<sub>1</sub></td><td> The angle subtended at P1 by the axis and<br> 
+   the top of the winding at the left hand end</td></tr>
+<tr><td> ψ<sub>2</sub></td><td>  Ditto for the RH end </td></tr>
+<tr><td> I</td><td>  The solenoid current (amps)</td></tr>
+</tbody></table>
+<p> 
+<img src="An%20introduction%20to%20the%20air%20cored%20coil_files/solenoid_field.png" class="ralign" alt="Field within a sloenoid">
+First we have to make a simplification because the flux lines will not run
+perfectly true along the axis but will spiral slightly around it
+(reflecting the helical nature of the coil itself).  This effect becomes
+less if the turns are spaced more closely.  In fact this leads on to
+the concept of a <i>current sheet</i>.  If we kept the dimensions of the
+solenoid the same but used, say, three times the number of turns and at the
+same time reduced the current to one third then the overall <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#mmf" title="Magneto motive force defined">magneto
+motive force</a> is the same and so the field produced will be much as
+before.
+</p><p>
+In the limit we no longer worry about the total number of individual
+turns and the coil current.  Mentally replace them with a thin walled
+copper tube carrying a total current N × I amps flowing around its
+circumference and distributed evenly along its length.  Don't ask how
+the current gets there; this is pure hypothesis :-) .  Now we can talk
+of an <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#mmf" title="Magneto motive force
+defined">mmf</a> per unit length of the tube, F<sub>l</sub> -
+</p>
+<div class="maths">
+	<div class="EqnRelation" id="MLT">
+	  F<sub>l</sub> =  <a href="#prm">I</a> × <a href="#prm">N</a> / 
+	  <a href="#prm">b</a> &nbsp; amps per metre
+	</div>
+	<div class="EqnRef"> Equation MLT</div>
+</div>
+<p>
+<br class="clear">
+Having gone to the trouble of smoothing out the turns into a continuous
+current sheet or tube we now proceed to chop it up again!  If we consider
+an infinitesimally short length of tube, dz, then we have precisely the
+sort of current loop whose axial field we calculated (equation <a href="#FMC" title="The magnetic field of a current loop">FMC</a>) via 
+the <a href="#bse" title="The Biot-Savart equation defined">Biot-Savart
+equation</a>. The mmf for the loop will be
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+		F<sub>m</sub> = F<sub>l</sub> dz
+	</div>
+	<div class="EqnRef"> Equation ACH</div>
+</div>
+<p>
+<br class="clear">
+Substituting this into eqn. <a href="#FMC">FMC</a>
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+		d<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#fdens" title="Magnetic flux density defined">B</a> =  <a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/mu/index.html#mu0" title="Permeability of a vacuum">
+		μ<sub>0</sub></a> <a href="#MLT">F<sub>l</sub></a> 
+		d<a href="#prm">z</a> 
+		sin<sup>3</sup><a href="#prm">ψ</a> / (2<a href="#prm">a</a>)
+	</div>
+	<div class="EqnRef"> Equation ACI</div>
+</div>
+<p>
+<br class="clear">
+This represents the contribution to the flux density at P1 due to a 
+current loop whose perimeter subtends an angle ψ with the axis at 
+P1.  From the geometry 
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+		z =  a / tanψ 
+	</div>
+	<div class="EqnRef"> Equation ACJ</div>
+</div>
+<p>
+<br class="clear">
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+		dz/dψ = -a cosec<sup>2</sup>ψ 
+	</div>
+	<div class="EqnRef"> Equation ACK</div>
+</div>
+<p>
+<br class="clear">
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+		dz = -a dψ cosec<sup>2</sup>ψ 
+	</div>
+	<div class="EqnRef"> Equation ACL</div>
+</div>
+<p>
+<br class="clear">
+Substituting this into the equation for dB gives
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+		dB =  μ<sub>0</sub> F<sub>l</sub> (-a dψ cosec<sup>2</sup>ψ) 
+		sin<sup>3</sup>ψ / (2a) 
+	</div>
+	<div class="EqnRef"> Equation ACM</div>
+</div>
+<p>
+<br class="clear">
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+		dB = -(μ<sub>0</sub> F<sub>l</sub> / 2) sinψ dψ 
+	</div>
+	<div class="EqnRef"> Equation ACN</div>
+</div>
+<p>
+<br class="clear">
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+		B = -(μ<sub>0</sub> F<sub>l</sub> / 2) <big>∫</big> sinψ dψ 
+	</div>
+	<div class="EqnRef"> Equation ACO</div>
+</div>
+<p>
+<br class="clear">
+For the part of the tube between P1 and the left hand end ψ will take values 
+between π/2 and ψ<sub>1</sub> 
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+		B = -(μ<sub>0</sub> F<sub>l</sub> / 2) 
+		<sub>π/2</sub><big>∫</big><sup>ψ1</sup> sinψ dψ
+	</div>
+	<div class="EqnRef"> Equation ACP</div>
+</div>
+<p>
+<br class="clear">
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+		B = (μ<sub>0</sub> F<sub>l</sub> / 2) 
+		[cosψ]<sub>π/2</sub><sup>ψ1</sup> 
+	</div>
+	<div class="EqnRef"> Equation ACQ</div>
+</div>
+<p>
+<br class="clear">
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+		B = (μ<sub>0</sub> F<sub>l</sub> / 2) 
+		cosψ<sub>1</sub>   
+	</div>
+	<div class="EqnRef"> Equation ACR</div>
+</div>
+<p>
+<br class="clear">
+The part of the tube to the right of P1 will superpose an additional flux 
+at at P1 -
+</p>
+<div class="maths">
+	<div class="EqnRelation" id="FDS">
+	  	<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/terms.html#fdens" title="Magnetic flux density defined">
+	  	B</a> = (<a href="http://info.ee.surrey.ac.uk/Workshop/advice/coils/mu/index.html#mu0" title="Permeability of a vacuum">μ<sub>0</sub></a> 
+	  	<a href="#MLT">F<sub>l</sub></a> / 2) 
+      	(cos<a href="#prm">ψ<sub>1</sub></a> + cos<a href="#prm">ψ<sub>2</sub></a>) 
+	</div>
+	<div class="EqnRefKey"> Equation FDS</div>
+</div>
+<p>
+<br class="clear">
+If <a href="#prm">b</a> &gt;&gt; <a href="#prm">a</a> (the solenoid is long
+and thin) then the angles ψ<sub>1</sub> and ψ<sub>2</sub> will both
+tend to zero for a point in the middle
+</p>
+<div class="maths">
+	<div class="EqnRelation">
+		B = μ<sub>0</sub> F<sub>l</sub> &nbsp; teslas
+	</div>
+	<div class="EqnRefKey"> Equation ACT</div>
+</div>
+<p>
+<br class="clear">
+At the end of a long coil the flux will be exactly half this value.
+Only towards the ends does the flux 'leak' through the sides.
+</p>
+<p>
+[<a href="#top"><big>↑</big> Top</a> of page]
+</p>
+<!-- 
+Used
+ABCDEFGHIJKLMNOPQRSTUVW
+ -->
+
+<hr>
+<p>
+E-mail:<a href="mailto:R.Clarke@surrey.ac.uk">
+R.Clarke@surrey.ac.uk</a><br> 
+Last revised: 2010 April 4<sup>th</sup>.
+</p>
+
+
+</body></html>

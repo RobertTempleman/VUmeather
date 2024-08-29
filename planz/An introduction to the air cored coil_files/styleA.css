@@ -1,0 +1,413 @@
+@charset "utf-8";
+/*
+ * Style sheet for Workshop pages
+ * RAC 161205
+ *
+ *   
+ *
+ */
+
+
+/* Buttoned link */
+a.btlnk > button {
+    text-align:			center;
+	cursor:				pointer;
+	color:				inherit;
+	background:			inherit;
+    text-decoration:	none;
+    font-size:			150%;
+    font-weight:		bold;
+	padding:			0em 0.2em 0em 0.2em;
+}
+a.btlnk:visited > button {
+	color:				darkmagenta;
+}
+a.btlnk > span {
+    color:				black;
+	padding:			0em 0.5em 0em 0em;
+}
+
+
+/* Clickable navigation arrows */
+b.n {
+    font-weight:		bold;
+    font-size:			150% 
+}
+
+
+body.soothe {
+	background:			whitesmoke;
+	color:				black;
+	border:				0px solid green;
+    padding:			0ex 2em 1ex 1em;
+	margin:				0em;
+}
+
+br.ClrImg {
+	clear:				both
+}
+
+br.clear {
+	clear:				both
+}
+
+br.lclear {
+	clear:				left;
+}
+
+div.maths {
+/*
+	background:			red;
+ */
+	height:				auto;
+    margin-left:		5%;
+    margin-right:		5%;
+    margin-top:			1ex;
+    margin-bottom:		1ex;
+}
+
+div.EqnRelation {
+	float:				left;
+    margin-right:		1em;
+	white-space:		nowrap
+}
+
+div.EqnRef {
+	color:				black;
+	float:				right;
+	white-space:		nowrap;
+    padding:			3px;
+	border-style:		solid;
+	border-width:		1px;
+	border-color:		silver;
+    margin-bottom:		1ex;
+    margin-right:		1em;
+}
+
+div.EqnRefKey {
+	color:				black;
+	background:			#FFFFC0;
+	float: right;
+	white-space:		nowrap;
+    padding:			3px;
+	border-style:		solid;
+	border-width:		1px;
+	border-color:		silver;
+    margin-bottom:		1ex;
+    margin-right:		1em;
+}
+
+div.code {
+    margin-left:		2em;
+    margin-right:		2em;
+	background:			#FFFFE0;
+	padding:			2em;
+	font-family:		monospace;
+}
+
+div.emph {
+/*
+	float: left;
+*/
+    margin-top:			1ex;
+    margin-bottom:		1ex;
+    margin-left:		2em;
+	width:				90%;
+    font-size:			120% ;
+	color:				black;
+	background:			#FFFFE0;
+	padding:			1em;
+}
+
+div.rfbox {
+	float:				right;  
+	border:				solid silver; 
+	border-width:		thin; 
+	margin-left:		1em;  
+	padding:			1em;
+	width:				22em;
+	clear:				right;
+}
+
+/* Standard footer */
+footer.mfoot > div {
+	clear:				both;
+	border:				0.2em solid silver;
+	margin:				0em;
+	padding:			0em;
+}
+footer.mfoot > div > nav > ul {
+	display:			flex;
+	flex-direction:		row;
+	justify-content:	space-between;
+	align-items:		flex-end;
+	margin:				0;
+	padding:			0em;
+}
+footer.mfoot > div > nav > ul > li {
+	list-style:			none;
+	text-align:			center;
+	margin:				0em;
+	padding:			0ex 1em 1ex 1em;
+	border:				solid silver;
+	border-width:		0ex 0.15em 0ex 0.15em;
+}
+footer.mfoot > div > nav > ul > li:first-of-type {
+	border-left-width:	0em;
+}
+footer.mfoot > div > nav > ul > li:last-of-type {
+	border-right-width:	0em;
+}
+footer.mfoot > div > nav > ul > li > a > p {
+	margin:				0em;
+	color:				black;
+}
+footer.mfoot > div > div  {
+	display:			flex;
+	justify-content:	space-between;
+	border:				solid silver;
+	border-width:		0.15em 0em 0em 0em;
+}
+footer.mfoot > div > div > * {
+	display:			inline-block;
+    padding:			0.5ex   0.5em 0.5ex 0.5em;
+	border:				solid silver;
+	border-width:		0em 0em 0em 0em;
+}
+footer.mfoot > div > div > address {
+	border-right-width:	0.15em;
+}
+footer.mfoot > div > div > time {
+	border-left-width:	0.15em;
+}
+footer.mfoot > div > nav > ul > li > a > button {
+    text-align:			center;
+	cursor:				pointer;
+	color:				inherit;
+	background:			inherit;
+    text-decoration:	none;
+    font-size:			200%;
+    font-weight:		bold;
+	padding:			0em 0em 0em 0em;
+}
+footer.mfoot > div > nav > ul > li > a:visited > button {
+	color:				darkmagenta;
+}
+
+/* My standard header */
+header.mhead > a:first-of-type  {
+	display:			block;
+	float:				left;
+	border:				0px solid magenta; 
+	margin:				0ex 1em 1ex 0em;
+	padding:			0ex 0em 0ex 0em;
+}
+header.mhead > a:last-of-type  {
+	display:			block;
+	float:				right;
+	border:				0px solid crimson; 
+	padding:			0ex 0em 0ex 0em;
+	margin:				0em 0em 1em 0em;
+}
+header.mhead > a > img {
+	height:				30ex;
+}
+header.mhead > a:last-of-type > img {
+	float:				right;
+}
+header.mhead > H1, header.mhead > H2, header.mhead > H3 {
+	text-align:			center;
+}
+
+
+
+h1.centre {
+	text-align:			center
+}
+
+img.ralign {
+	float:				right;
+	border-style:		none;
+    margin-left:		1em;
+    margin-right:		1em;
+    margin-top:			1ex;
+    margin-bottom:		1ex;
+}
+
+img.mrgn {
+    margin-left:		1em;
+    margin-right:		1em;
+    margin-top:			1ex;
+    margin-bottom:		1ex;
+}
+
+img.tnail {
+	float:				left;
+    margin-left:		1em;
+    margin-right:		1em;
+    margin-bottom:		0ex;
+}
+
+main.mmain { 
+	clear:				left;
+}
+
+/* Navigation list*/
+nav.navlst {
+	display:			table;
+	float:				right;
+	clear:				right;
+	border:				0.2em solid silver; 
+	padding:			0em;
+	margin:				0em 0em 1em 1em;
+}
+nav.navlst > a {
+	display:			table-row;
+	padding:			0em;
+	margin:				0em;
+}
+nav.navlst > a > * {
+	display:			table-cell;
+	border:				0px solid Orange; 
+	padding:			0em;
+	margin:				0em;
+}
+nav.navlst > a > button {
+    text-align:			center;
+	cursor:				pointer;
+	color:				inherit;
+	background:			inherit;
+    text-decoration:	none;
+    font-size:			150%;
+    font-weight:		bold;
+	padding:			0em 0em 0em 0.5em;
+}
+nav.navlst > a:visited > button {
+	color:				darkmagenta;
+}
+nav.navlst > a > div {
+    color:				black;
+	padding:			0em 0.5em 0em 0em;
+}
+nav.navlst h2 {
+	border:				0em solid orange; 
+	padding:			0em 0em 0em 0em;
+	margin:				0em;
+}
+
+p.test {
+	color:				red;
+	background:			white
+}
+
+p.emph {
+    margin-left:		2em;
+    margin-right:		2em;
+    font-size:			120% ;
+	color:				black;
+	background:			#FFFFE0;
+	padding:			2em;
+}
+
+p.quotation {
+	color:				black;
+	background:			#FFFFE0;
+    margin-left:		2em;
+    margin-right:		2em;
+	padding:			1em;
+}
+
+p.maths {
+	height:				8ex;
+    margin-left:		10%;
+    margin-right:		10%;
+/*
+	border-style:		solid;
+	border-width:		1px;
+	border-color:		red;
+*/
+}
+
+section.msect {
+	border:				solid silver; 
+	border-width:		0ex 0em 0.4ex 0em;
+	margin:				0ex 0em 4ex 0em;
+}
+
+span.code {
+	background:			#FFFFE0;
+	font-family:		"andale mono", monospace;
+}
+
+span.emph {
+    font-size:			150% ;
+}
+
+table.eqn {
+	border-style:		hidden;
+    margin-left:		2em;
+	width:				80%
+}
+
+table.ordnry {
+	caption-side:		bottom;    
+    margin:				1em;
+	border-collapse:	collapse;
+    border:				0.2em solid silver;
+}
+
+table.ordnry td {
+	 border:			0.1em solid gray;
+}
+
+table.ordnry th {
+	 border:			0.1em solid gray;
+}
+
+table.ralign {
+	float:				right;
+	caption-side:		bottom;    
+    margin:				1em;
+	border-collapse:	collapse;
+    border:				0.2em solid silver;
+}
+
+table.ralign td {
+	 border:			0.1em solid gray;
+}
+
+table.ralign th {
+	 border:			0.1em solid gray;
+}
+
+td.EqnRelation {
+    text-align:			left;
+	border-style:		hidden;
+	width:				100%;
+	white-space:		nowrap
+}
+
+td.EqnRef {
+	border-style:		hidden;
+	width:				auto;
+    text-align:			right;
+	white-space:		nowrap;
+	color:				black;
+	background:			#FFFFC0
+}
+
+td.nwrap { 
+	white-space:		nowrap 
+}
+
+ol.nobulls {
+	list-style:			none;
+}
+
+ul.nobulls {
+	list-style:			none;
+}
+
+span.bigtxt {
+	font-size:			1.5em;
+}

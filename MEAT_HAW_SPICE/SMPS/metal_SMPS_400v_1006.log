@@ -1,0 +1,36 @@
+Questionable use of curly braces in ".model sir870adp vdmos(rg=3 vto=2.9 rd=3.2m rs=1.5m rb={m} kp=100 mtriode=1.85 cgdmax=1.4n cgdmin=70p cgs=2.9n cjo=3.6n m=.4 a=.7 vj=.7 lambda=20m is=3p ksubthres=.08 mfg=siliconix vds=100 ron=5.5m qg=53.5n)"
+    Error: undefined symbol in: "[m]"
+Circuit: * C:\metal_detecturd\MEAT_HAW_SPICE\SMPS\metal_SMPS_400v_1006.asc
+
+Limiting rise time of source v10 to 2e-007
+Limiting fall time of source v10 to 2e-007
+Limiting rise time of source v9 to 2e-006
+Limiting fall time of source v9 to 2e-006
+WARNING: Less than two connections to node N007.  This node is used by S3.
+Direct Newton iteration for .op point succeeded.
+Ignoring empty pin current: Ix(u4:vdd)
+Ignoring empty pin current: Ix(u5:vdd)
+Ignoring empty pin current: Ix(u4:vdd)
+Ignoring empty pin current: Ix(u5:vdd)
+Heightened Def Con from 6.04075e-005 to 6.04135e-005
+Heightened Def Con from 0.000184716 to 0.000184716
+
+Date: Sun Feb 19 21:05:22 2017
+Total elapsed time: 36.546 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 435522
+traniter = 435485
+tranpoints = 143972
+accept = 108867
+rejected = 35107
+matrix size = 301
+fillins = 184
+solver = Alternate
+Thread vector: 67.5/38.8[8] 23.1/9.2[8] 10.8/5.3[8] 3.0/2.9[2]  2592/500
+Matrix Compiler1: 25.84 KB object code size  12.1/8.3/[4.7]
+Matrix Compiler2: 28.25 KB object code size  7.1/8.6/[4.2]
+
+

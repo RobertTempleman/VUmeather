@@ -1,0 +1,19 @@
+* C:\metal_detecturd\MEAT_HAW_SPICE\SMPS\CD4011_oscllaTURD_II.asc
+V7 VDD 0 5
+V2 0 -op 15 Rser=0
+V1 +op 0 15 Rser=0
+XU1 N001 N001 N004 VDD 0 CD4011B VDD=5 SPEED=1.0 TRIPDT=5e-9
+XU2 N004 VDD N003 VDD 0 CD4011B VDD=5 SPEED=1.0 TRIPDT=5e-9
+R3 N004 N002 10k
+C2 N003 N002 50p Rser=.0008
+R4 N001 N002 47k
+.model SWI SW(Ron=1n Roff=1000G Vt=0.5 Vh=.4)
+.model SW2 SW(Ron=1n Roff=1000G Vt=0.0 Vh=1u)
+.param charge_pulse_width     1.u
+.lib LM318.sub
+.lib CD4066.sub
+.inc CD4000.lib
+.include cd4066.sub
+.tran .001 startup uic
+.backanno
+.end

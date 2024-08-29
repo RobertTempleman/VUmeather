@@ -1,0 +1,78 @@
+Questionable use of curly braces in ".model sir870adp vdmos(rg=3 vto=2.9 rd=3.2m rs=1.5m rb={m} kp=100 mtriode=1.85 cgdmax=1.4n cgdmin=70p cgs=2.9n cjo=3.6n m=.4 a=.7 vj=.7 lambda=20m is=3p ksubthres=.08 mfg=siliconix vds=100 ron=5.5m qg=53.5n)"
+    Error: undefined symbol in: "[m]"
+Circuit: * C:\metal_detecturd\MEAT_HAW_SPICE\SMPS\metal_SMPS_400v_1007.asc
+
+Limiting rise time of source v10 to 2e-007
+Limiting fall time of source v10 to 2e-007
+Limiting rise time of source v9 to 2e-006
+Limiting fall time of source v9 to 2e-006
+Per .tran options, skipping operating point for transient analysis.
+Ignoring empty pin current: Ix(u4:vdd)
+Ignoring empty pin current: Ix(u5:vdd)
+Heightened Def Con from 4.5e-009 to 4.5e-009
+Heightened Def Con from 4.5e-009 ++++++++++++++++++++to 4.50027e-009
+Heightened Def Con from 0.00120982 to 0.00120982
+Heightened Def Con from 0.00121183 to 0.00121183
+Heightened Def Con from 0.00121382 to 0.00121383
+Heightened Def Con from 0.00121783 to 0.00121783
+Heightened Def Con from 0.00122583 to 0.00122583
+Heightened Def Con from 0.00122982 to 0.00122983
+Heightened Def Con from 0.00123183 to 0.00123183
+Heightened Def Con from 0.00123983 to 0.00123983
+Heightened Def Con from 0.00124183 to 0.00124183
+Heightened Def Con from 0.00126383 to 0.00126384
+Heightened Def Con from 0.00126983 to 0.00126984
+Heightened Def Con from 0.00127584 to 0.00127584
+Heightened Def Con from 0.00128384 to 0.00128384
+Heightened Def Con from 0.00128584 to 0.00128584
+Heightened Def Con from 0.00128984 to 0.00128984
+Heightened Def Con from 0.00129184 to 0.00129184
+Heightened Def Con from 0.00130184 to 0.00130184
+Heightened Def Con from 0.00130384 to 0.00130385
+Heightened Def Con from 0.00130584 to 0.00130585
+Heightened Def Con from 0.00131384 to 0.00131385
+Heightened Def Con from 0.00132184 to 0.00132185
+Heightened Def Con from 0.00132785 to 0.00132785
+Heightened Def Con from 0.00133185 to 0.00133185
+Heightened Def Con from 0.00133384 to 0.00133385
+Heightened Def Con from 0.00134385 to 0.00134385
+Heightened Def Con from 0.00134785 to 0.00134785
+Heightened Def Con from 0.00134985 to 0.00134986
+Heightened Def Con from 0.00135385 to 0.00135386
+Heightened Def Con from 0.00136985 to 0.00136986
+Heightened Def Con from 0.00137185 to 0.00137186
+Heightened Def Con from 0.00137785 to 0.00137786
+Heightened Def Con from 0.00138786 to 0.00138786
+Heightened Def Con from 0.00139186 to 0.00139186
+Heightened Def Con from 0.00139786 to 0.00139786
+Heightened Def Con from 0.00141786 to 0.00141787
+Heightened Def Con from 0.00141892 to 0.00141893
+Heightened Def Con from 0.00143986 to 0.00143987
+Heightened Def Con from 0.00144186 to 0.00144187
+Heightened Def Con from 0.00145187 to 0.00145188
+Heightened Def Con from 0.00145387 to 0.00145387
+Heightened Def Con from 0.00145587 to 0.00145587
+Heightened Def Con from 0.00146787 to 0.00146787
+Heightened Def Con from 0.00147187 to 0.00147188
+Heightened Def Con from 0.00147387 to 0.00147388
+Heightened Def Con from 0.00148387 to 0.00148387
+
+Date: Mon Feb 20 23:16:27 2017
+Total elapsed time: 55.872 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 564707
+traniter = 564707
+tranpoints = 182045
+accept = 135839
+rejected = 46273
+matrix size = 345
+fillins = 147
+solver = Alternate
+Thread vector: 101.3/48.3[8] 31.3/10.7[8] 14.7/7.0[8] 3.5/2.9[3]  2592/500
+Matrix Compiler1: 25.23 KB object code size  13.1/9.2/[3.7]
+Matrix Compiler2: 30.20 KB object code size  7.7/9.9/[3.4]
+
+

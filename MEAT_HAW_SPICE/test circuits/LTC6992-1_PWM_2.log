@@ -1,0 +1,23 @@
+Circuit: * C:\metal_detecturd\MEAT_HAW_SPICE\test circuits\LTC6992-1_PWM_2.asc
+
+Per .tran options, skipping operating point for transient analysis.
+Heightened Def Con from 0.000728458 to 0.000728458
+
+Date: Mon Feb 20 23:06:14 2017
+Total elapsed time: 4.823 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 226635
+traniter = 226635
+tranpoints = 62810
+accept = 46771
+rejected = 16040
+matrix size = 48
+fillins = 0
+solver = Alternate
+Matrix Compiler1: 1.84 KB object code size  0.6/0.4/[0.3]
+Matrix Compiler2: 3.03 KB object code size  0.4/0.5/[0.3]
+
+
