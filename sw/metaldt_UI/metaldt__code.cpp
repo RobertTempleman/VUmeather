@@ -39,13 +39,6 @@ void draw_display_mode_see_parametric_eq_settings();
 //u8 display_mode=SEE_OTHER_DIGI_POT_SETTINGS;
 u8 display_mode=DISPLAY_MODE_UNMODIFIED_PEQ_SETTINGS;
 
-#define LOGFN(a) log(a)
-#define EXPFN(a) exp(a)
-#define xoffset_in_microseconds_since_coil_de_energization 0.0f
-#define plot_width_in_microseconds 55.0f
-#define plot_scale ((float)GRAPH_WIDTH/plot_width_in_microseconds)
-#define plot_scale_y ((float)GRAPH_HALF_HEIGHT/plot_width_in_microseconds)
-
 #define PRINT_INFO_COL_TXT goldenrod1_cr
 #define PRINT_INFO_COL_NUM goldenrod_cr
 #define PRINT_INFO_COL_SYM goldenrod2_cr
@@ -129,18 +122,12 @@ void update_graph(){
 void dot_vline(u8 x,u8 y,u8 h);
 void dot_hline(u8 x,u8 y,u8 w);
 
-//char yaxis_keytext[YAXIS_TICKS][4]={"+30","+25","+20","+15","+10"," +5","dB0"," -5","-10","-15","-20","-25","-30"};
 u16 xaxis_ticks[]={0,5,10,15,20,21,22,23,24,25,26,27,28,29,30,35,40,45,50,55};
 u8 nxat=sizeof(xaxis_ticks)/sizeof(*xaxis_ticks);
-
-//float xoffset=LOGFN((float)xaxis_ticks[0]);
-//float plot_scale=(float)(GRAPH_WIDTH-1)/(LOGFN((float)xaxis_ticks[nxat-1])-xoffset);
-//float plot_scale=(float)(GRAPH_WIDTH-1)/(LOGFN((float)xaxis_ticks[nxat-1])-xoffset);
 
 void hline_preprocess(u8 x,u8 y,u8 w){
   for(u8 i=x;i<=x+w;i++){
     prepro_pixels[i].push_back(preprocessed_pixels(y,gcol));
-//    p(i,y);
   }
 }
 
@@ -156,7 +143,6 @@ void hline_clr(u8 x,u8 y,u8 w){
         j++;
       }
     }
-//    p(i,y);
   }
 }
 
@@ -164,7 +150,6 @@ void hline_clr(u8 x,u8 y,u8 w){
 void vline_preprocess(u8 x,u8 y,u8 h){
   for(u8 i=y;i<=y+h;i++){
     prepro_pixels[x].push_back(preprocessed_pixels(i,gcol));
-//    p(x,i);
   }
 }
 
@@ -173,7 +158,6 @@ void dot_vline(u8 x,u8 y,u8 h){
   h+=y;
   while(y<=h){
     prepro_pixels[x].push_back(preprocessed_pixels(y,gcol));
-//    p(x,y);
     y+=2;
   }
 }
@@ -183,7 +167,6 @@ void dot_hline(u8 x,u8 y,u8 w){
   w+=y;
   while(x<=w){
     prepro_pixels[x].push_back(preprocessed_pixels(y,gcol));
-//    p(x,y);
     x+=2;
   }
 }
@@ -192,19 +175,6 @@ void dot_hline(u8 x,u8 y,u8 w){
 void draw_parametric_info_display_key(){
   u8 y=INFO_TEXT_START_Y-29;
   print_pretty_byte(PRINT_X_FREQ +8,y,"PULSE INDUCTION METAL DETECTOR",PRINT_INFO_TITLE_COL ,PRINT_INFO_TITLE_COL,PRINT_INFO_TITLE_COL);
-//  y+=7;
-//  print_pretty_byte(PRINT_X_FREQ +14,y,"METALDT ACTIVE FILTER STAGES:",PRINT_INFO_TITLE2_COL ,PRINT_INFO_TITLE2_COL,PRINT_INFO_TITLE2_COL);
-//  y+=8;
-//  print_pretty_byte(PRINT_X_FREQ +7,y,"FREQUENCY",PRINT_INFO_FREQ_COL ,PRINT_INFO_FREQ_COL ,PRINT_INFO_FREQ_COL );
-//  print_pretty_byte(PRINT_X_DEPTH+7,y,"DEPTH"    ,PRINT_INFO_DEPTH_COL,PRINT_INFO_DEPTH_COL,PRINT_INFO_DEPTH_COL);
-//  y+=6;
-//  print_pretty_byte(PRINT_X_FREQ +7,y,"(HZ)",PRINT_INFO_FREQ_COL,PRINT_INFO_FREQ_COL,PRINT_INFO_FREQ_COL);
-//  print_pretty_byte(PRINT_X_Q    +7,y,"STAGE Q"  ,PRINT_INFO_Q_COL    ,PRINT_INFO_Q_COL    ,PRINT_INFO_Q_COL    );
-//  print_pretty_byte(PRINT_X_DEPTH+7,y,"(DB)",PRINT_INFO_DEPTH_COL,PRINT_INFO_DEPTH_COL,PRINT_INFO_DEPTH_COL);
-  //    print_pretty_byte(PRINT_X_Q+PRINT_DIGI_POT_OFFSET,y++,"FREQUENCY",PRINT_INFO_FREQ_COL,PRINT_INFO_FREQ_COL,PRINT_INFO_FREQ_COL);
-  //    print_pretty_byte(PRINT_X_Q+PRINT_DIGI_POT_OFFSET,y,"HZ",PRINT_INFO_FREQ_COL,PRINT_INFO_FREQ_COL,PRINT_INFO_FREQ_COL);
-  //    print_int(PRINT_X_Q+PRINT_DIGI_POT_OFFSET,y,donkeys);
-  //    plot_numbert_float(PRINT_X_Q     ,y,Q ,lightblue2_cr,false);
 }
 
 vector<preprocessed_pixels> prepro_pixels[DISPLAY_WIDTH];
@@ -281,15 +251,6 @@ void draw_graph(){
       prepro_pixels[GRAPH_STARTX-2].push_back(preprocessed_pixels(y+2,gcol));
       dot_hline(GRAPH_STARTX,y+2,GRAPH_WIDTH);
       y+=ystep;
-    }
-
-    gcol=white_cr;
-    y=GRAPH_STARTY+GRAPH_HEIGHT+1;
-    for(u8 i=0;i<GRAPH_WIDTH;i++){
-      u16 f=xaxis_ticks[i];
-      if (once){
-        _cprintf("%d,%20.20lf\n",i,EXPFN(LOGFN(10.0)+LOGFN(20000.0/10.0)*(double)i/(double)(GRAPH_WIDTH-1)));
-      }
     }
 
     draw_parametric_info_display_key();
