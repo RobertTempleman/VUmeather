@@ -151,45 +151,7 @@ void program_and_select_correct_output_muxer(u8 muxed_input){
 
 
 extern s32 num_speed_tests;
-extern u8 speed_test_countdown;
-extern bool do_speed_test;
 
-
-//#define NOP\
-//  asm volatile("nop\n\t"::);
-//
-//#if 0
-//// 800ns=12.8 16Mhz cycles
-//#define ONE_FULL_READ\
-//  PORTB=0;\
-//  NOP;\
-//  temp=*d0_in;\
-//  PORTB=1;\
-//  *(pds++)=temp;\
-//  NOP;NOP;NOP;NOP;\
-//  NOP;NOP;NOP;NOP;\
-//  NOP;NOP;NOP;NOP;\
-//  NOP;\
-//  NOP;\
-//  NOP;
-//#else
-//#define ONE_FULL_READ\
-//  PORTB=0;\
-//  NOP;\
-//  temp=*d0_in;\
-//  PORTB=1;\
-//  *(pds++)=temp;\
-//  NOP;NOP;NOP;NOP;\
-//  NOP;NOP;NOP;NOP;\
-//  NOP;NOP;NOP;NOP;\
-//  NOP;\
-//  NOP;
-//
-//#endif
-//#define NUM_PORTD_READ_TESTS (1000000/40)
-//
-//
-//#define WAIT_ONE_TICK for(u8 i=0;i<12;i++){NOP;};
 
 
 void loop(){
