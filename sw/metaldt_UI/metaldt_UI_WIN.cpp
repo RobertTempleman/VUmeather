@@ -396,20 +396,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             //          one_second_update_counter();
             break;
           case VK_SPACE:
-            need_to_cycle_mode=true;
-            sleep_update_outputs=SLEEP_UPDATE_OUTPUT_LINE_WIDTH;
             break;
           case VK_LCONTROL:
-            need_to_toggle_func=true;
-            sleep_update_outputs=SLEEP_UPDATE_OUTPUT_LINE_WIDTH;
             break;
           case VK_RIGHT:
-            current_peq++;
-            sleep_update_outputs=SLEEP_UPDATE_OUTPUT_LINE_WIDTH;
             break;
           case VK_LEFT:
-            current_peq--;
-            sleep_update_outputs=SLEEP_UPDATE_OUTPUT_LINE_WIDTH;
             break;
 //          case 'T':
 //            SetTimer(hWnd,5,5,0); // second update

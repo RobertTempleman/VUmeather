@@ -26,7 +26,6 @@ public:
 };
 
 #define NUM_SAMPLES_TO_TAKE 50
-extern bool need_to_cycle_mode;
 extern bool need_to_toggle_func;
 
 extern u8 coil_energise_delay_microseconds;
@@ -151,7 +150,5 @@ extern float required_gm_tube_hv;
 
 #define CONTROL_CHANGE_AMMOUNT_THRESHOLD 2
 #define SLEEP_UPDATE_OUTPUT_LINE_WIDTH 255
-
-extern u8 sleep_update_outputs;  // potentiometer reading has changed significantly
 
 void RTT_hardware_digi_pot_spi_out(u8 data_byte);
