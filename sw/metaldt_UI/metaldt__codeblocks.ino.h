@@ -152,7 +152,6 @@ extern float required_gm_tube_hv;
 #define CONTROL_CHANGE_AMMOUNT_THRESHOLD 2
 #define SLEEP_UPDATE_OUTPUT_LINE_WIDTH 255
 
-extern u8 stage_enabled[5];
 extern u8 sleep_update_outputs;  // potentiometer reading has changed significantly
 
 void RTT_hardware_digi_pot_spi_out(u8 data_byte);

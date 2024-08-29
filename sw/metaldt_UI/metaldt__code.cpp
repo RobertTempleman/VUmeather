@@ -79,7 +79,6 @@ float get_plot_index_offset(float time_in_microseconds_since_coil_de_energizatio
 }
 
 
-u8 stage_enabled[NUM_PEQS]={1,1,1,1,1};
 
 
 u8 sleep_update_outputs=0;  // dont update outputs & inhibit all digital clocked signals close to the analog components
@@ -447,13 +446,6 @@ void draw_graph(){
       }
       st_ind=en_ind;
     }
-    for(u8 peqi=0;peqi<NUM_PEQS;peqi++){
-      which_peq_to_redraw_info_for=1<<peqi;
-      which_peq_part_to_redraw_info_for=7;
-      for(u8 i=0;i<3;i++){
-        redraw_info_text();
-      }
-    }
     draw_display_mode_see_parametric_eq_settings();
   }
 
@@ -623,18 +615,6 @@ void cycle_display_mode(){
   switch(display_mode){
     case DISPLAY_MODE_DEBUG_SEE_RAW_PEQ_POT_N_DIGIPOT_SETTINGS:
       break;
-    case DISPLAY_MODE_UNMODIFIED_PEQ_SETTINGS:
-    {
-      for(u8 i=0;i<NUM_PEQS;i++){
-        which_peq_to_redraw_info_for=1<<i;
-        which_peq_part_to_redraw_info_for=7;
-        for(u8 j=0;j<3;j++){
-          redraw_info_text();
-        }
-      }
-      draw_display_mode_see_parametric_eq_settings();
-    }
-    break;
   }
 }
 

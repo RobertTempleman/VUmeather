@@ -11,7 +11,6 @@
 #include <conio.h>
 #include <bitset>
 
-#define NUM_PEQS_WINDWS 5
 //#include "preprocessed_data_from_LTSPICE_METALDT_simulation.h"
 
 // plot extra graphs under windows to verify that ATMEGA memory optimisations are valid
@@ -406,16 +405,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
           case VK_RIGHT:
             current_peq++;
-            if (current_peq>=NUM_PEQS_WINDWS){
-              current_peq=0;
-            }
             sleep_update_outputs=SLEEP_UPDATE_OUTPUT_LINE_WIDTH;
             break;
           case VK_LEFT:
             current_peq--;
-            if (current_peq<0){
-              current_peq=NUM_PEQS_WINDWS-1;
-            }
             sleep_update_outputs=SLEEP_UPDATE_OUTPUT_LINE_WIDTH;
             break;
 //          case 'T':

@@ -1,6 +1,5 @@
 
 
-#define NUM_PEQS 5
 #define NUM_QS 4
 #define NUM_DEPTHS 4
 #define NUM_FOLDED_AVR_UI_XCOORDS 69
@@ -18,7 +17,6 @@ s8 read_folded_preprocessed_AVR_UI_data(u8 q,u8 depth,u8 i);
 void redraw_info_text();
 
 extern s8 folded_preprocessed_AVR_UI_data[NUM_QS][NUM_DEPTHS][NUM_FOLDED_AVR_UI_XCOORDS];
-extern float centre_frequencies_from_LTspice_simulation[NUM_PEQS][NUM_CENTRE_FREQUENCIES];
 
 extern float depth_potentiometer_values[NUM_DEPTHS*2+1];
 extern float stage_depth_in_dBs[ACTUAL_DEPTH_VALUES];
