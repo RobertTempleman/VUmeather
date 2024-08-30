@@ -24,6 +24,56 @@
 
 bool once=true;
 
+#define NUM_VU_BARS 8
+
+
+class VUbar{
+  public:
+  VUbar(char* _key, u8 _xoffset, u8 _xw, u32 _col, u32 _colb):
+    xw(_xw),
+    col(_col),
+    col_border(_colb){
+    x=_xoffset+xoffset;
+    key[0]=_key[0];
+    key[1]=_key[1];
+    key[2]=_key[2];
+    xoffset+=xw;
+  };
+  VUbar(){};
+
+  char key[3];
+  u8 x;
+  u8 xw;
+  u32 col;
+  u32 col_border;
+  static u8 xoffset;
+};
+
+u8 VUbar::xoffset=0;
+
+#define START_VU_X 10
+#define START_VU_YS 4
+#define START_VU_YE 104
+
+#define MAIN_VOL_WIDTH 20
+#define BALANCE_VOL_WIDTH 10
+
+#define MONITOR_VOL_WIDTH 10
+
+#define SUB_VOL_WIDTH 20
+
+VUbar vubars[NUM_VU_BARS]={
+  VUbar("VOL",START_VU_X ,MAIN_VOL_WIDTH    ,yellow3_cr   ,grey30_cr),
+  VUbar("BL" ,0          ,BALANCE_VOL_WIDTH ,grey50_cr    ,grey30_cr),
+  VUbar("BR ",0          ,BALANCE_VOL_WIDTH ,grey50_cr    ,grey30_cr),
+  VUbar("SUB",0          ,SUB_VOL_WIDTH     ,green_cr     ,grey30_cr),
+  VUbar("LL" ,0          ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr),
+  VUbar("LH" ,0          ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr),
+  VUbar("RL" ,0          ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr),
+  VUbar("RH" ,0          ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr)
+};
+
+u8 VUbar_val[NUM_VU_BARS];
 
 u16 d_pins_addr[14];
 u8 d_pins_mask[14];
@@ -34,9 +84,7 @@ u8 rx_is=128;
 
 
 void plot_numbert_float(u8 orig_x,u8 &y,float n,COLORREF col2,bool int_if_less_than_1000=false);
-void draw_display_mode_see_parametric_eq_settings();
 
-//u8 display_mode=SEE_OTHER_DIGI_POT_SETTINGS;
 u8 display_mode=DISPLAY_MODE_UNMODIFIED_PEQ_SETTINGS;
 
 #define PRINT_INFO_COL_TXT goldenrod1_cr
@@ -57,13 +105,13 @@ u8 display_mode=DISPLAY_MODE_UNMODIFIED_PEQ_SETTINGS;
 #define PRINT_RAW_DIGI_POT_OFFSET 12
 #define INFO_TEXT_START_Y 135
 
-#define PRINT_AUX_FREQ_COL goldenrod_cr
-#define PRINT_INFO_FREQ_COL goldenrod1_cr
-#define PRINT_INFO_DEPTH_COL magenta1_cr
-#define PRINT_INFO_Q_COL lightblue2_cr
+//#define PRINT_AUX_FREQ_COL goldenrod_cr
+//#define PRINT_INFO_FREQ_COL goldenrod1_cr
+//#define PRINT_INFO_DEPTH_COL magenta1_cr
+//#define PRINT_INFO_Q_COL lightblue2_cr
 #define PRINT_INFO_TITLE_COL grey50_cr
-#define PRINT_INFO_TITLE2_COL grey30_cr
-#define PRINT_INFO_TITLE2_OPERATOR_COL goldenrod3_cr
+//#define PRINT_INFO_TITLE2_COL grey30_cr
+//#define PRINT_INFO_TITLE2_OPERATOR_COL goldenrod3_cr
 
 void print_int(u8 x,u8 y,u16 n,char*format="%03d"){
   char rtt[6];
@@ -71,14 +119,8 @@ void print_int(u8 x,u8 y,u16 n,char*format="%03d"){
   print_pretty_byte(x,y,rtt,PRINT_INFO_COL_DIGI_POT,PRINT_INFO_COL_DIGI_POT,PRINT_INFO_COL_DIGI_POT);
 }
 
-u8 which_peq_part_to_redraw_info_for=7;
-
 void redraw_info_text();
 
-
-
-u8 coil_energise_delay_microseconds=50;
-u8 sampling_delay_microseconds=50;
 u16 buttholmes_anal_value=0;
 
 u8 last_y_plotted[GRAPH_WIDTH];
@@ -91,11 +133,6 @@ int max_transfer_fn=0;
 s32 num_speed_tests=0;
 
 
-#define CON1 220.0f
-#define ECON1 -0.1f
-#define CON2 3.0f
-#define ECON2 -0.2f
-
 
 void update_graph(){
   gcol=blue3_cr;
@@ -105,7 +142,7 @@ void update_graph(){
   u8 y=118;
   sprintf(rtt,"n=%ld ",num_speed_tests++);
   print_pretty_byte(PRINT_X_FREQ+8,y,rtt,PRINT_INFO_TITLE_COL ,PRINT_INFO_TITLE_COL,PRINT_INFO_TITLE_COL);y+=7;
-  sprintf(rtt,"Big Bob and Lovely Meral=%d ",buttholmes_anal_value);
+  sprintf(rtt,"Big Bob and Lovely Meral2=%d ",buttholmes_anal_value);
   print_pretty_byte(PRINT_X_FREQ+8,y,rtt,goldenrod_cr,white_cr,hotpink_cr);
 }
 
@@ -194,6 +231,113 @@ vector<preprocessed_pixels> prepro_pixels[DISPLAY_WIDTH];
 #endif
 
 
+#if WINDOWS_DEBUG_DISPLAY==1
+///////////////////////////////////// preprocess //////////////////////////////////////
+///////////////////////////////////// preprocess //////////////////////////////////////
+///////////////////////////////////// preprocess //////////////////////////////////////
+///////////////////////////////////// preprocess //////////////////////////////////////
+///////////////////////////////////// preprocess //////////////////////////////////////
+
+void save_preprocessed_pixels(){
+// remove duplicate coords
+	for (u8 x = 0;x < DISPLAY_WIDTH;x++){
+		vector<preprocessed_pixels>& pp = prepro_pixels[x];
+		sort(pp.begin(), pp.end());
+		pp.erase(unique(pp.begin(), pp.end()), pp.end());
+	}
+	preprocessed_index_num = 0;
+	preprocessed_num_gcols = 0;
+	memset(preprocessed_x_index, 0, sizeof(preprocessed_x_index));
+	for (u8 x = 0;x < DISPLAY_WIDTH;x++){
+		vector<preprocessed_pixels>& pp = prepro_pixels[x];
+		assert(preprocessed_num_gcols < NUM_PRE_GCOLS);
+		for (int j = 0;j < (int)pp.size();j++){
+			bool new_col = true;
+			for (int k = 0;k < preprocessed_num_gcols;k++){
+				if (preprocessed_gcols[k] == pp[j].gcol){
+					new_col = false;
+					break;
+				}
+			}
+			if (new_col){
+				preprocessed_gcols[preprocessed_num_gcols++] = pp[j].gcol;
+			}
+		}
+	}
+
+	for (u8 x = 0;x < DISPLAY_WIDTH;x++){
+		vector<preprocessed_pixels>& pp = prepro_pixels[x];
+		assert(preprocessed_index_num - 4 < PREPROCESSED_PIXEL_NUM);
+		for (int j = 0;j < (int)pp.size();j++){
+			COLORREF gcol = pp[j].gcol;
+			u8 y = pp[j].y;
+			s8 gcol_index = -1;
+			for (int k = 0;k < preprocessed_num_gcols;k++){
+				if (preprocessed_gcols[k] == gcol){
+					gcol_index = k;
+					break;
+				}
+			}
+			assert(gcol_index != -1);
+			preprocessed_pix_data[preprocessed_index_num++] = y;
+			preprocessed_pix_data[preprocessed_index_num++] = (u8)gcol_index;
+		}
+		preprocessed_x_index[x] = preprocessed_index_num;
+	}
+
+	// save preprocessed data as cpp
+	int rt = 1;
+	FILE* fp;
+	fopen_s(&fp, "preprocessed_graph_pixels.cpp", "w");
+	u16 st_ind = 0;
+	fprintf_s(fp, "PROGMEM uint16_t preprocessed_x_index[%d]={\n  ", DISPLAY_WIDTH);
+	bool dc = false;
+	int breakl = 16;
+	for (u8 x = 0;x < DISPLAY_WIDTH;x++){
+		if (dc) fprintf_s(fp, ",");
+		if (breakl < 0){
+			breakl = 16;
+			fprintf_s(fp, "\n  ");
+		}
+		breakl--;
+		fprintf_s(fp, "0x%04X", preprocessed_x_index[x]);
+		dc = true;
+	}
+	fprintf_s(fp, "\n};\n");
+
+	fprintf_s(fp, "PROGMEM uint16_t preprocessed_gcols[%d]={\n  ", preprocessed_num_gcols);
+	dc = false;
+	for (u8 x = 0;x < preprocessed_num_gcols;x++){
+		if (dc) fprintf_s(fp, ",");
+		fprintf_s(fp, "0x%04X", col_trans(preprocessed_gcols[x]));
+		dc = true;
+	}
+	fprintf_s(fp, "\n};\n");
+
+	fprintf_s(fp, "PROGMEM uint8_t preprocessed_pix_data[%d]={\n  ", preprocessed_index_num);
+	dc = false;
+	breakl = 32;
+	for (u16 j = 0;j < preprocessed_index_num;j++){
+		if (dc) fprintf_s(fp, ",");
+		if (breakl < 0){
+			breakl = 32;
+			fprintf_s(fp, "\n  ");
+		}
+		breakl--;
+		fprintf_s(fp, "0x%02X", preprocessed_pix_data[j]);
+		dc = true;
+	}
+	fprintf_s(fp, "\n};\n");
+	fclose(fp);
+}
+///////////////////////////////////// end preprocess //////////////////////////////////////
+///////////////////////////////////// end preprocess //////////////////////////////////////
+///////////////////////////////////// end preprocess //////////////////////////////////////
+///////////////////////////////////// end preprocess //////////////////////////////////////
+///////////////////////////////////// end preprocess //////////////////////////////////////
+#endif
+
+
 bool initial_render=true;
 bool display_input_or_output_potentiometers=false;
 
@@ -259,98 +403,7 @@ void draw_graph(){
     once=false;
     preprocess_and_save=false;
 
-
-    ///////////////////////////////////// preprocess //////////////////////////////////////
-    // remove duplicate coords
-    for(u8 x=0;x<DISPLAY_WIDTH;x++){
-      vector<preprocessed_pixels> &pp=prepro_pixels[x];
-      sort(pp.begin(),pp.end());
-      pp.erase(unique(pp.begin(),pp.end()),pp.end());
-    }
-    preprocessed_index_num=0;
-    preprocessed_num_gcols=0;
-    memset(preprocessed_x_index,0,sizeof(preprocessed_x_index));
-    for(u8 x=0;x<DISPLAY_WIDTH;x++){
-      vector<preprocessed_pixels> &pp=prepro_pixels[x];
-      assert(preprocessed_num_gcols<NUM_PRE_GCOLS);
-      for(int j=0;j<(int)pp.size();j++){
-        bool new_col=true;
-        for(int k=0;k<preprocessed_num_gcols;k++){
-          if (preprocessed_gcols[k]==pp[j].gcol){
-            new_col=false;
-            break;
-          }
-        }
-        if (new_col){
-          preprocessed_gcols[preprocessed_num_gcols++]=pp[j].gcol;
-        }
-      }
-    }
-
-    for(u8 x=0;x<DISPLAY_WIDTH;x++){
-      vector<preprocessed_pixels> &pp=prepro_pixels[x];
-      assert(preprocessed_index_num-4<PREPROCESSED_PIXEL_NUM);
-      for(int j=0;j<(int)pp.size();j++){
-        COLORREF gcol=pp[j].gcol;
-        u8 y=pp[j].y;
-        s8 gcol_index=-1;
-        for(int k=0;k<preprocessed_num_gcols;k++){
-          if (preprocessed_gcols[k]==gcol){
-            gcol_index=k;
-            break;
-          }
-        }
-        assert(gcol_index!=-1);
-        preprocessed_pix_data[preprocessed_index_num++]=y;
-        preprocessed_pix_data[preprocessed_index_num++]=(u8)gcol_index;
-      }
-      preprocessed_x_index[x]=preprocessed_index_num;
-    }
-
-    // save preprocessed data as cpp
-    int rt=1;
-    FILE *fp;
-    fopen_s(&fp,"preprocessed_graph_pixels.cpp","w");
-    u16 st_ind=0;
-    fprintf_s(fp,"PROGMEM uint16_t preprocessed_x_index[%d]={\n  ",DISPLAY_WIDTH);
-    bool dc=false;
-    int breakl=16;
-    for(u8 x=0;x<DISPLAY_WIDTH;x++){
-      if (dc) fprintf_s(fp,",");
-      if (breakl<0){
-        breakl=16;
-        fprintf_s(fp,"\n  ");
-      }
-      breakl--;
-      fprintf_s(fp,"0x%04X",preprocessed_x_index[x]);
-      dc=true;
-    }
-    fprintf_s(fp,"\n};\n");
-
-    fprintf_s(fp,"PROGMEM uint16_t preprocessed_gcols[%d]={\n  ",preprocessed_num_gcols);
-    dc=false;
-    for(u8 x=0;x<preprocessed_num_gcols;x++){
-      if (dc) fprintf_s(fp,",");
-      fprintf_s(fp,"0x%04X",col_trans(preprocessed_gcols[x]));
-      dc=true;
-    }
-    fprintf_s(fp,"\n};\n");
-
-    fprintf_s(fp,"PROGMEM uint8_t preprocessed_pix_data[%d]={\n  ",preprocessed_index_num);
-    dc=false;
-    breakl=32;
-    for(u16 j=0;j<preprocessed_index_num;j++){
-      if (dc) fprintf_s(fp,",");
-      if (breakl<0){
-        breakl=32;
-        fprintf_s(fp,"\n  ");
-      }
-      breakl--;
-      fprintf_s(fp,"0x%02X",preprocessed_pix_data[j]);
-      dc=true;
-    }
-    fprintf_s(fp,"\n};\n");
-    fclose(fp);
+    save_preprocessed_pixels();
   }
 #endif
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -376,7 +429,6 @@ void draw_graph(){
       }
       st_ind=en_ind;
     }
-    draw_display_mode_see_parametric_eq_settings();
   }
 
 
@@ -490,10 +542,6 @@ void plot_numbert_float(u8 orig_x,u8 &y,float n,COLORREF col2,bool int_if_less_t
   print_pretty_byte(orig_x,y,rtt,grey65_cr,col2,green3_cr);y+=LINE_HEIGHT;
 }
 
-
-void draw_display_mode_see_parametric_eq_settings(){
-  u8 y=INFO_TEXT_START_Y-29;
-}
 
 bool need_to_toggle_func=false;
 

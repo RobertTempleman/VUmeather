@@ -28,8 +28,6 @@ public:
 #define NUM_SAMPLES_TO_TAKE 50
 extern bool need_to_toggle_func;
 
-extern u8 coil_energise_delay_microseconds;
-extern u8 sampling_delay_microseconds;
 extern u16 buttholmes_anal_value;
 
 extern persistent_settings settings;
