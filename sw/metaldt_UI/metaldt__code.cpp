@@ -87,6 +87,9 @@ void plot_numbert_float(u8 orig_x,u8 &y,float n,COLORREF col2,bool int_if_less_t
 
 u8 display_mode=DISPLAY_MODE_UNMODIFIED_PEQ_SETTINGS;
 
+#define xoffset_in_microseconds_since_coil_de_energization 0.0f
+#define plot_width_in_microseconds 55.0f
+#define plot_scale ((float)GRAPH_WIDTH/plot_width_in_microseconds)
 #define PRINT_INFO_COL_TXT goldenrod1_cr
 #define PRINT_INFO_COL_NUM goldenrod_cr
 #define PRINT_INFO_COL_SYM goldenrod2_cr
@@ -113,7 +116,11 @@ u8 display_mode=DISPLAY_MODE_UNMODIFIED_PEQ_SETTINGS;
 //#define PRINT_INFO_TITLE2_COL grey30_cr
 //#define PRINT_INFO_TITLE2_OPERATOR_COL goldenrod3_cr
 
-void print_int(u8 x,u8 y,u16 n,char*format="%03d"){
+float get_plot_index_offset(float time_in_microseconds_since_coil_de_energization){
+  // determine index of transfer_fn graph from frequency
+  float x=(time_in_microseconds_since_coil_de_energization-(float)xoffset_in_microseconds_since_coil_de_energization)*(float)plot_scale;
+  return x;
+}void print_int(u8 x,u8 y,u16 n,char*format="%03d"){
   char rtt[6];
   sprintf(rtt,format,n);
   print_pretty_byte(x,y,rtt,PRINT_INFO_COL_DIGI_POT,PRINT_INFO_COL_DIGI_POT,PRINT_INFO_COL_DIGI_POT);
@@ -365,7 +372,7 @@ void draw_graph(){
     y=GRAPH_STARTY+GRAPH_HEIGHT+1;
     for(u8 i=0;i<nxat;i++){
       u16 f=xaxis_ticks[i];
-      u8 x=0;
+      u8 x=(u8)get_plot_index_offset((float)f);
       if (x>=0){
         char str[64];
         gcol=COL_N;
