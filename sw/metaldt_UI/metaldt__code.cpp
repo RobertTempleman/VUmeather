@@ -6,7 +6,7 @@
 
 
 #define GRAPH_STARTY 4
-#define GRAPH_HEIGHT (plot_height_in_volts*10)  // must be multiple
+#define GRAPH_HEIGHT (plot_height_in_volts*6)  // must be multiple
 
 #define COL_HGRID_LINES grey14_cr
 #define COL_AXIS      goldenrod_cr
@@ -27,17 +27,26 @@ bool once=true;
 #define NUM_VU_BARS 8
 
 
+#define START_VU_X 10
+#define START_VU_YS 154
+#define START_VU_YE 150
+
+#define MAIN_VOL_WIDTH 20
+#define BALANCE_VOL_WIDTH 8
+
+#define MONITOR_VOL_WIDTH 10
+
+#define SUB_VOL_WIDTH 20
+
 class VUbar{
   public:
-  VUbar(char* _key, u8 _xoffset, u8 _xw, u32 _col, u32 _colb):
-    xw(_xw),
-    col(_col),
-    col_border(_colb){
-    x=_xoffset+xoffset;
+  VUbar(char* _key, u8 _xoffset, u8 _xw, u32 _col, u32 _colb):xw(_xw),col(_col),col_border(_colb){
     key[0]=_key[0];
     key[1]=_key[1];
     key[2]=_key[2];
+    x=_xoffset+xoffset;
     xoffset+=xw;
+    val=0;
   };
   VUbar(){};
 
@@ -46,31 +55,21 @@ class VUbar{
   u8 xw;
   u32 col;
   u32 col_border;
+  u8 val;
   static u8 xoffset;
 };
 
-u8 VUbar::xoffset=0;
-
-#define START_VU_X 10
-#define START_VU_YS 4
-#define START_VU_YE 104
-
-#define MAIN_VOL_WIDTH 20
-#define BALANCE_VOL_WIDTH 10
-
-#define MONITOR_VOL_WIDTH 10
-
-#define SUB_VOL_WIDTH 20
+u8 VUbar::xoffset=START_VU_X;
 
 VUbar vubars[NUM_VU_BARS]={
-  VUbar("VOL",START_VU_X ,MAIN_VOL_WIDTH    ,yellow3_cr   ,grey30_cr),
-  VUbar("BL" ,0          ,BALANCE_VOL_WIDTH ,grey50_cr    ,grey30_cr),
-  VUbar("BR ",0          ,BALANCE_VOL_WIDTH ,grey50_cr    ,grey30_cr),
-  VUbar("SUB",0          ,SUB_VOL_WIDTH     ,green_cr     ,grey30_cr),
-  VUbar("LL" ,0          ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr),
-  VUbar("LH" ,0          ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr),
-  VUbar("RL" ,0          ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr),
-  VUbar("RH" ,0          ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr)
+  VUbar("VOL",4  ,MAIN_VOL_WIDTH    ,yellow3_cr   ,grey30_cr),
+  VUbar("BL" ,0  ,BALANCE_VOL_WIDTH ,grey50_cr    ,grey30_cr),
+  VUbar("BR ",0  ,BALANCE_VOL_WIDTH ,grey50_cr    ,grey30_cr),
+  VUbar("SUB",6  ,SUB_VOL_WIDTH     ,green_cr     ,grey30_cr),
+  VUbar("LL" ,0  ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr),
+  VUbar("LH" ,0  ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr),
+  VUbar("RL" ,0  ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr),
+  VUbar("RH" ,0  ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr)
 };
 
 u8 VUbar_val[NUM_VU_BARS];
@@ -106,7 +105,7 @@ u8 display_mode=DISPLAY_MODE_UNMODIFIED_PEQ_SETTINGS;
 #define PRINT_INFO_COL_DIGI_POT grey40_cr
 #define PRINT_DIGI_POT_OFFSET 31
 #define PRINT_RAW_DIGI_POT_OFFSET 12
-#define INFO_TEXT_START_Y 135
+#define INFO_TEXT_START_Y 100
 
 //#define PRINT_AUX_FREQ_COL goldenrod_cr
 //#define PRINT_INFO_FREQ_COL goldenrod1_cr
@@ -128,7 +127,7 @@ float get_plot_index_offset(float time_in_microseconds_since_coil_de_energizatio
 
 void redraw_info_text();
 
-u16 buttholmes_anal_value=0;
+u16 buttholmes_anal_value=50;
 
 u8 last_y_plotted[GRAPH_WIDTH];
 s8 total_transfer_function[GRAPH_WIDTH];
@@ -146,7 +145,7 @@ void update_graph(){
   gcol=0;
 
   char rtt[32];
-  u8 y=118;
+  u8 y=78;
   sprintf(rtt,"n=%ld ",num_speed_tests++);
   print_pretty_byte(PRINT_X_FREQ+8,y,rtt,PRINT_INFO_TITLE_COL ,PRINT_INFO_TITLE_COL,PRINT_INFO_TITLE_COL);y+=7;
   sprintf(rtt,"Big Bob and Lovely Meral2=%d ",buttholmes_anal_value);
@@ -218,7 +217,7 @@ void dot_hline(u8 x,u8 y,u8 w){
 
 void draw_parametric_info_display_key(){
   u8 y=INFO_TEXT_START_Y-29;
-  print_pretty_byte(PRINT_X_FREQ +8,y,"PULSE INDUCTION METAL DETECTOR",PRINT_INFO_TITLE_COL ,PRINT_INFO_TITLE_COL,PRINT_INFO_TITLE_COL);
+  print_pretty_byte(PRINT_X_FREQ+8,y,"BERTYS GREAT VU METER TECH GREAT",PRINT_INFO_TITLE_COL ,PRINT_INFO_TITLE_COL,PRINT_INFO_TITLE_COL);
 }
 
 vector<preprocessed_pixels> prepro_pixels[DISPLAY_WIDTH];
@@ -438,7 +437,14 @@ void draw_graph(){
     }
   }
 
+  static float berty_phi=0.0;
+  float bertyyy=(float)buttholmes_anal_value*0.001f;
+  for (u8 i=0;i<GRAPH_WIDTH;i++){
+    total_transfer_function[i]=(GRAPH_HEIGHT>>1)+(u8)((float)(GRAPH_HEIGHT>>1)*sin(berty_phi+bertyyy*(float)i));
+  }
+  berty_phi+=0.03f;
 
+  // draw preprocessed pixels
   for(u8 i=0;i<GRAPH_WIDTH;i++){
     u8 y=GRAPH_STARTY+GRAPH_HEIGHT-total_transfer_function[i];
     u8 ytest=last_y_plotted[i];
@@ -469,6 +475,20 @@ void draw_graph(){
       }
       last_y_plotted[i]=y;
     }
+  }
+
+  static float berty_phi2=0.0;
+  float bertyyy2=(float)buttholmes_anal_value*0.001f;
+  for(u8 i=0;i<NUM_VU_BARS;i++){
+    VUbar &v=vubars[i];
+    v.val=16+(u8)((float)15.0* sin(berty_phi+bertyyy*(float)i));
+  }
+
+  for(u8 i=0;i<NUM_VU_BARS;i++){
+    VUbar &v=vubars[i];
+    gcol=v.col;
+    rectfill(v.x,START_VU_YS,v.xw-4,v.val);
+//    rectfill(v.x+2,START_VU_YS,2,v.val);
   }
 
 }
