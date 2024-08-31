@@ -29,9 +29,8 @@ bool once=true;
 
 #define START_VU_X 10
 #define START_VU_YS 154
-#define START_VU_YE 150
 
-#define MAIN_VOL_WIDTH 20
+#define MAIN_VOL_WIDTH 24
 #define BALANCE_VOL_WIDTH 8
 
 #define MONITOR_VOL_WIDTH 10
@@ -40,12 +39,12 @@ bool once=true;
 
 class VUbar{
   public:
-  VUbar(char* _key, u8 _xoffset, u8 _xw, u32 _col, u32 _colb):xw(_xw),col(_col),col_border(_colb){
+  VUbar(char* _key, u8 _xoffset, u8 _xw, u32 _col):xw(_xw),col(_col){
     key[0]=_key[0];
     key[1]=_key[1];
     key[2]=_key[2];
-    x=_xoffset+xoffset;
-    xoffset+=xw;
+    x=xoffset;
+    xoffset+=xw+_xoffset;
     val=0;
   };
   VUbar(){};
@@ -54,7 +53,6 @@ class VUbar{
   u8 x;
   u8 xw;
   u32 col;
-  u32 col_border;
   u8 val;
   static u8 xoffset;
 };
@@ -62,14 +60,14 @@ class VUbar{
 u8 VUbar::xoffset=START_VU_X;
 
 VUbar vubars[NUM_VU_BARS]={
-  VUbar("VOL",4  ,MAIN_VOL_WIDTH    ,yellow3_cr   ,grey30_cr),
-  VUbar("BL" ,0  ,BALANCE_VOL_WIDTH ,grey50_cr    ,grey30_cr),
-  VUbar("BR ",0  ,BALANCE_VOL_WIDTH ,grey50_cr    ,grey30_cr),
-  VUbar("SUB",6  ,SUB_VOL_WIDTH     ,green_cr     ,grey30_cr),
-  VUbar("LL" ,0  ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr),
-  VUbar("LH" ,0  ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr),
-  VUbar("RL" ,0  ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr),
-  VUbar("RH" ,0  ,MONITOR_VOL_WIDTH ,goldenrod_cr ,grey30_cr)
+  VUbar("VOL",1  ,MAIN_VOL_WIDTH    ,white_cr  ),
+  VUbar("BL" ,0  ,BALANCE_VOL_WIDTH ,grey50_cr   ),
+  VUbar("BR ",10 ,BALANCE_VOL_WIDTH ,grey50_cr   ),
+  VUbar("SUB",1  ,SUB_VOL_WIDTH     ,green_cr    ),
+  VUbar("LL" ,0  ,MONITOR_VOL_WIDTH ,blue_cr),
+  VUbar("LH" ,0  ,MONITOR_VOL_WIDTH ,goldenrod_cr),
+  VUbar("RL" ,0  ,MONITOR_VOL_WIDTH ,blue_cr),
+  VUbar("RH" ,0  ,MONITOR_VOL_WIDTH ,goldenrod_cr)
 };
 
 u8 VUbar_val[NUM_VU_BARS];
@@ -477,20 +475,41 @@ void draw_graph(){
     }
   }
 
-  static float berty_phi2=0.0;
   float bertyyy2=(float)buttholmes_anal_value*0.001f;
   for(u8 i=0;i<NUM_VU_BARS;i++){
     VUbar &v=vubars[i];
-    v.val=16+(u8)((float)15.0* sin(berty_phi+bertyyy*(float)i));
+    v.val=32+(u8)((float)25.0* sin(berty_phi*30.0f+bertyyy*(float)i*16));
   }
 
+  static u8 last_vubar_y[NUM_VU_BARS]={0};
+  //rectfill(v.x,START_VU_YS,v.xw-4,v.val);
   for(u8 i=0;i<NUM_VU_BARS;i++){
     VUbar &v=vubars[i];
+    u8 y=v.val;
     gcol=v.col;
-    rectfill(v.x,START_VU_YS,v.xw-4,v.val);
-//    rectfill(v.x+2,START_VU_YS,2,v.val);
+    // M<AKE iT OINLTY DRRAWE WAYSD BEEN CHASMNGES
+    // M<AKE iT OINLTY DRRAWE WAYSD BEEN CHASMNGES
+    // M<AKE iT OINLTY DRRAWE WAYSD BEEN CHASMNGES
+    // M<AKE iT OINLTY DRRAWE WAYSD BEEN CHASMNGES
+    // M<AKE iT OINLTY DRRAWE WAYSD BEEN CHASMNGES
+    // M<AKE iT OINLTY DRRAWE WAYSD BEEN CHASMNGES
+    rectfill(v.x+1,START_VU_YS,v.xw-3,v.val);
+    // M<AKE iT OINLTY DRRAWE WAYSD BEEN CHASMNGES
+    // M<AKE iT OINLTY DRRAWE WAYSD BEEN CHASMNGES
+    // M<AKE iT OINLTY DRRAWE WAYSD BEEN CHASMNGES
+    // M<AKE iT OINLTY DRRAWE WAYSD BEEN CHASMNGES
+    // M<AKE iT OINLTY DRRAWE WAYSD BEEN CHASMNGES
+    // M<AKE iT OINLTY DRRAWE WAYSD BEEN CHASMNGES
+    // M<AKE iT OINLTY DRRAWE WAYSD BEEN CHASMNGES
+    if (last_vubar_y[i]>v.val){
+      gcol=0;
+      u8 ys_clear=START_VU_YS-v.val;
+      u8 yls_clear=START_VU_YS-last_vubar_y[i];
+      u8 yw_clear=ys_clear-yls_clear;
+      rectfill(v.x+1,ys_clear,v.xw-3,yw_clear);
+    }
+    last_vubar_y[i]=v.val;
   }
-
 }
 
 
