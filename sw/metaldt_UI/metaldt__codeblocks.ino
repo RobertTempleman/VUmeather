@@ -22,12 +22,6 @@ void draw_graph();
 
 extern u16 d_pins_addr[14];
 extern u8 d_pins_mask[14];
-extern bool display_pins;
-
-extern u8 tx_is;
-extern u8 rx_is;
-
-extern u8 port_d_val;
 
 #define PIN_TEST_CAPCITOR A1
 #define PIN_COIL_ENERGIZE A2
@@ -35,29 +29,46 @@ extern u8 port_d_val;
 #define PIN_ENABLE_74HC244 A0
 #define PIN_BUTTHOLMES A4
 
+#define PIN_MUXER_ADDRESS0 2
+#define PIN_MUXER_ADDRESS1 3
+#define PIN_MUXER_ADDRESS2 4
+#define PIN_MUXER_ADDRESS3 5
+
 void setup(){
   tft.initR();   // initialize a ST7735S chip for 128x160 display
   tft.fillScreen(ST7735_BLACK);
 
   draw_graph();
-  for(u8 i=0;i<8;i++){
-//    pinMode(i,INPUT);
-    pinMode(i,INPUT_PULLUP);
-  }
-  pinMode(8,OUTPUT);
-  pinMode(PIN_ENABLE_74HC244,OUTPUT);
-  pinMode(PIN_TEST_CAPCITOR,OUTPUT);
-  pinMode(PIN_COIL_ENERGIZE,OUTPUT);
-  pinMode(PIN_COIL_DEENERGIZE,OUTPUT);
-  digitalWrite(PIN_ENABLE_74HC244,HIGH); // disable driving of serial rx & tx pins by 74244 buffer
-  digitalWrite(PIN_COIL_ENERGIZE,LOW);
-  digitalWrite(PIN_COIL_DEENERGIZE,LOW);
+//  for(u8 i=0;i<8;i++){
+////    pinMode(i,INPUT);
+//    pinMode(i,INPUT_PULLUP);
+//  }
+//  pinMode(8,OUTPUT);
+//  pinMode(PIN_ENABLE_74HC244,OUTPUT);
+//  pinMode(PIN_TEST_CAPCITOR,OUTPUT);
+//  pinMode(PIN_COIL_ENERGIZE,OUTPUT);
+//  pinMode(PIN_COIL_DEENERGIZE,OUTPUT);
+//  digitalWrite(PIN_ENABLE_74HC244,HIGH); // disable driving of serial rx & tx pins by 74244 buffer
+//	digitalWrite(PIN_COIL_ENERGIZE,LOW);
+//	digitalWrite(PIN_COIL_DEENERGIZE,LOW);
+
+	pinMode(PIN_MUXER_ADDRESS0 , OUTPUT);
+	pinMode(PIN_MUXER_ADDRESS1 , OUTPUT);
+	pinMode(PIN_MUXER_ADDRESS2 , OUTPUT);
+	pinMode(PIN_MUXER_ADDRESS3 , OUTPUT);
 
   for(u8 i=0;i<14;i++){
     d_pins_addr[i]=(u16)portInputRegister(digitalPinToPort(i));
     d_pins_mask[i]=digitalPinToBitMask(i);
   }
-  display_pins=true;
+}
+
+
+int read_multiplexer_analog_channel(u8 channel){
+	digitalWrite(PIN_MUXER_ADDRESS0 ,channel&1);
+	digitalWrite(PIN_MUXER_ADDRESS1 ,channel&2);
+	digitalWrite(PIN_MUXER_ADDRESS2 ,channel&4);
+	digitalWrite(PIN_MUXER_ADDRESS3 ,channel&8);
 }
 
 

@@ -74,11 +74,6 @@ u8 VUbar_val[NUM_VU_BARS];
 
 u16 d_pins_addr[14];
 u8 d_pins_mask[14];
-bool display_pins=false;
-u8 port_d_val=0;
-u8 tx_is=128;
-u8 rx_is=128;
-
 
 void plot_numbert_float(u8 orig_x,u8 &y,float n,COLORREF col2,bool int_if_less_than_1000=false);
 
