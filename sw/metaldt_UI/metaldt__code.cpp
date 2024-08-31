@@ -478,10 +478,39 @@ void draw_graph(){
   float bertyyy2=(float)buttholmes_anal_value*0.001f;
   for(u8 i=0;i<NUM_VU_BARS;i++){
     VUbar &v=vubars[i];
-    v.val=32+(u8)((float)25.0* sin(berty_phi*30.0f+bertyyy*(float)i*16));
+    v.val=32+(u8)((float)25.0* sin(berty_phi*4.0f+bertyyy*(float)i*16));
   }
 
   static u8 last_vubar_y[NUM_VU_BARS]={0};
+
+  #if 1
+  static u8 ontcee=1;
+  if (ontcee){
+    ontcee=0;
+
+  }
+  //rectfill(v.x,START_VU_YS,v.xw-4,v.val);
+  for(u8 i=0;i<NUM_VU_BARS;i++){
+    VUbar &v=vubars[i];
+    u8 y=v.val;
+    //    rectfill(v.x+1,START_VU_YS,v.xw-3,v.val);
+    if (last_vubar_y[i]>y){
+      gcol=0;
+      u8 ys_clear=START_VU_YS-y;
+      u8 yls_clear=START_VU_YS-last_vubar_y[i];
+      u8 yw_clear=ys_clear-yls_clear;
+      rectfill(v.x+1,ys_clear,v.xw-3,yw_clear);
+    }else{
+      gcol=v.col;
+      u8 ys_clear=START_VU_YS-y;
+      u8 yls_clear=START_VU_YS-last_vubar_y[i];
+      u8 yw_clear=yls_clear-ys_clear;
+      rectfill(v.x+1,yls_clear,v.xw-3,yw_clear);
+    }
+    last_vubar_y[i]=y;
+  }
+
+#else
   //rectfill(v.x,START_VU_YS,v.xw-4,v.val);
   for(u8 i=0;i<NUM_VU_BARS;i++){
     VUbar &v=vubars[i];
@@ -510,6 +539,7 @@ void draw_graph(){
     }
     last_vubar_y[i]=v.val;
   }
+#endif
 }
 
 
