@@ -121,6 +121,7 @@ float get_plot_index_offset(float time_in_microseconds_since_coil_de_energizatio
 void redraw_info_text();
 
 u16 buttholmes_anal_value=50;
+u16 volume_main=0;
 
 u8 last_y_plotted[GRAPH_WIDTH];
 s8 total_transfer_function[GRAPH_WIDTH];
@@ -141,8 +142,9 @@ void update_graph(){
   u8 y=78;
   sprintf(rtt,"n=%ld ",num_speed_tests++);
   print_pretty_byte(PRINT_X_FREQ+8,y,rtt,PRINT_INFO_TITLE_COL ,PRINT_INFO_TITLE_COL,PRINT_INFO_TITLE_COL);y+=7;
-  sprintf(rtt,"Big Bob and Lovely Meral2=%d ",buttholmes_anal_value);
-  print_pretty_byte(PRINT_X_FREQ+8,y,rtt,goldenrod_cr,white_cr,hotpink_cr);
+  sprintf(rtt,"%d ",buttholmes_anal_value);
+//  sprintf(rtt,"Big Bob and Lovely Meral2=%d ",buttholmes_anal_value);
+  print_pretty_byte(PRINT_X_FREQ+110,y,rtt,goldenrod_cr,white_cr,hotpink_cr);
 }
 
 
@@ -211,6 +213,9 @@ void dot_hline(u8 x,u8 y,u8 w){
 void draw_parametric_info_display_key(){
   u8 y=INFO_TEXT_START_Y-29;
   print_pretty_byte(PRINT_X_FREQ+8,y,"BERTYS GREAT VU METER TECH GREAT",PRINT_INFO_TITLE_COL ,PRINT_INFO_TITLE_COL,PRINT_INFO_TITLE_COL);
+  y+=14;
+  print_pretty_byte(PRINT_X_FREQ+8,y,"Big Bob and Lovely Meral=",goldenrod_cr,white_cr,hotpink_cr);
+
 }
 
 vector<preprocessed_pixels> prepro_pixels[DISPLAY_WIDTH];
@@ -432,10 +437,19 @@ void draw_graph(){
 
   static float berty_phi=0.0;
   float bertyyy=(float)buttholmes_anal_value*0.001f;
+  berty_phi+=0.03f;
+#define SINE_DEMO 0
+#if SINE_DEMO==1
   for (u8 i=0;i<GRAPH_WIDTH;i++){
     total_transfer_function[i]=(GRAPH_HEIGHT>>1)+(u8)((float)(GRAPH_HEIGHT>>1)*sin(berty_phi+bertyyy*(float)i));
   }
-  berty_phi+=0.03f;
+#else
+  static u8 graph_pos=0;
+  total_transfer_function[graph_pos++]=(GRAPH_HEIGHT*volume_main)>>9;
+  if (graph_pos>=GRAPH_WIDTH){
+    graph_pos=0;
+  }
+#endif
 
   // draw preprocessed pixels
   for(u8 i=0;i<GRAPH_WIDTH;i++){
@@ -475,6 +489,8 @@ void draw_graph(){
     VUbar &v=vubars[i];
     v.val=32+(u8)((float)25.0* sin(berty_phi*4.0f+bertyyy*(float)i*16));
   }
+
+  vubars[0].val=volume_main>>2;
 
   static u8 last_vubar_y[NUM_VU_BARS]={0};
 

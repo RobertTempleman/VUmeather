@@ -29,6 +29,8 @@ public:
 extern bool need_to_toggle_func;
 
 extern u16 buttholmes_anal_value;
+extern u16 volume_main;
+
 
 extern persistent_settings settings;
 extern u8 display_mode;

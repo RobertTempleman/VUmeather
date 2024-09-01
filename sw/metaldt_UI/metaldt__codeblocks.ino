@@ -29,10 +29,13 @@ extern u8 d_pins_mask[14];
 #define PIN_ENABLE_74HC244 A0
 #define PIN_BUTTHOLMES A4
 
+#define PIN_MUXER_ANALOG A0
+
 #define PIN_MUXER_ADDRESS0 2
 #define PIN_MUXER_ADDRESS1 3
 #define PIN_MUXER_ADDRESS2 4
 #define PIN_MUXER_ADDRESS3 5
+#define PIN_MUXER_ENABLE 6
 
 void setup(){
   tft.initR();   // initialize a ST7735S chip for 128x160 display
@@ -56,6 +59,7 @@ void setup(){
 	pinMode(PIN_MUXER_ADDRESS1 , OUTPUT);
 	pinMode(PIN_MUXER_ADDRESS2 , OUTPUT);
 	pinMode(PIN_MUXER_ADDRESS3 , OUTPUT);
+	pinMode(PIN_MUXER_ENABLE   , OUTPUT);
 
   for(u8 i=0;i<14;i++){
     d_pins_addr[i]=(u16)portInputRegister(digitalPinToPort(i));
@@ -69,6 +73,9 @@ int read_multiplexer_analog_channel(u8 channel){
 	digitalWrite(PIN_MUXER_ADDRESS1 ,channel&2);
 	digitalWrite(PIN_MUXER_ADDRESS2 ,channel&4);
 	digitalWrite(PIN_MUXER_ADDRESS3 ,channel&8);
+	digitalWrite(PIN_MUXER_ENABLE   ,LOW);
+	return analogRead(PIN_MUXER_ANALOG);
+
 }
 
 
@@ -167,6 +174,7 @@ extern s32 num_speed_tests;
 
 void loop(){
   buttholmes_anal_value=analogRead(PIN_BUTTHOLMES);
+	volume_main=read_multiplexer_analog_channel(0);
   draw_graph();
 }
 
