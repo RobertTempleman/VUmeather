@@ -472,8 +472,35 @@ void Adafruit_ST7735::draw_coloured_char(int16_t x, int16_t y,int16_t w, int16_t
 void Adafruit_ST7735::fillScreen(uint16_t color) {
   fillRect(0, 0,  DISPLAY_WIDTH, DISPLAY_HEIGHT, color);
 }
-
-
+//
+//void Adafruit_ST7735::rectfill_down_screen(int16_t x, int16_t y, int16_t w, int16_t h,uint16_t color){
+//  *csport &= ~cspinmask;
+//  setAddrWindow(x, y, x+w-1, y+h-1);
+//  uint8_t hi = color >> 8, lo = color;
+//  *rsport |=  rspinmask;
+//  uint16_t q=w*h;
+//  while(q--){
+//    SPIWRITE(hi);
+//    SPIWRITE(lo);
+//  }
+//  *csport |= cspinmask;
+//}
+//
+//
+//void Adafruit_ST7735::fillRect_up_screen(int16_t x, int16_t y, int16_t w, int16_t h,uint16_t color){
+//  *csport &= ~cspinmask;
+//  setAddrWindow(x, y, x+w-1, y+h-1);
+//  uint8_t hi = color >> 8, lo = color;
+//  *rsport |=  rspinmask;
+//  uint16_t q=w*h;
+//  while(q--){
+//    SPIWRITE(hi);
+//    SPIWRITE(lo);
+//  }
+//  *csport |= cspinmask;
+//}
+//
+//
 void Adafruit_ST7735::fillRect(int16_t x, int16_t y, int16_t w, int16_t h,uint16_t color){
   *csport &= ~cspinmask;
   setAddrWindow(x, y, x+w-1, y+h-1);
@@ -486,6 +513,46 @@ void Adafruit_ST7735::fillRect(int16_t x, int16_t y, int16_t w, int16_t h,uint16
   }
   *csport |= cspinmask;
 }
+
+
+void Adafruit_ST7735::fillRect_8(int16_t x, int16_t y, int16_t w, int16_t h,uint16_t color){
+  *csport &= ~cspinmask;
+  setAddrWindow(x, y, x+w-1, y+h-1);
+  uint8_t hi = color >> 8, lo = color;
+  *rsport |=  rspinmask;
+  uint16_t q=(w*h)>>1;
+  uint16_t a=0;
+  while(q--){
+    SPIWRITE(hi);SPIWRITE(lo);
+    a++;
+    a++;
+    //    asm volatile("nop");
+//    asm volatile("nop");
+//    asm volatile("nop");
+//    asm volatile("nop");
+    SPIWRITE(hi);SPIWRITE(lo);
+  }
+  *csport |= cspinmask;
+}
+
+//void Adafruit_ST7735::fillRect_8(int16_t x, int16_t y, int16_t w, int16_t h,uint16_t color){
+//  *csport &= ~cspinmask;
+//  setAddrWindow(x, y, x+w-1, y+h-1);
+//  uint8_t hi = color >> 8, lo = color;
+//  *rsport |=  rspinmask;
+//  uint16_t q=(w*h)>>3;
+//  while(q--){
+//    SPIWRITE(hi);SPIWRITE(lo);
+//    SPIWRITE(hi);SPIWRITE(lo);
+//    SPIWRITE(hi);SPIWRITE(lo);
+//    SPIWRITE(hi);SPIWRITE(lo);
+//    SPIWRITE(hi);SPIWRITE(lo);
+//    SPIWRITE(hi);SPIWRITE(lo);
+//    SPIWRITE(hi);SPIWRITE(lo);
+//    SPIWRITE(hi);SPIWRITE(lo);
+//  }
+//  *csport |= cspinmask;
+//}
 
 
 // Pass 8-bit (each) R,G,B, get back 16-bit packed color

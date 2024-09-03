@@ -126,6 +126,8 @@ public:
   void drawFastVLine_with_masked_text(int16_t x, int16_t y, int16_t h, uint16_t color,uint16_t new_col);
   void drawFastHLine(int16_t x, int16_t y, int16_t w, uint16_t color);
   void fillRect(int16_t x, int16_t y, int16_t w, int16_t h,uint16_t color);
+  void fillRect_8(int16_t x, int16_t y, int16_t w, int16_t h,uint16_t color);
+
   uint16_t Color565(uint8_t r, uint8_t g, uint8_t b);
   void draw_coloured_char(int16_t x, int16_t y,int16_t w, int16_t h, uint16_t offset,uint16_t colour);
   void plot_big_font_char_with_stride_in_image(uint8_t xp,uint8_t yp,uint8_t chr,uint8_t char_plot_width);

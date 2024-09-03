@@ -33,9 +33,9 @@ bool once=true;
 #define MAIN_VOL_WIDTH 24
 #define BALANCE_VOL_WIDTH 8
 
-#define MONITOR_VOL_WIDTH 10
+#define MONITOR_VOL_WIDTH 8
 
-#define SUB_VOL_WIDTH 20
+#define SUB_VOL_WIDTH 16
 
 class VUbar{
   public:
@@ -490,7 +490,18 @@ void draw_graph(){
     v.val=32+(u8)((float)25.0* sin(berty_phi*4.0f+bertyyy*(float)i*16));
   }
 
-  vubars[0].val=volume_main>>2;
+#define MAX_VU_BAR_HEIGHT 62
+
+#if WINDOWS_DEBUG_DISPLAY==1
+  u8 v=(160*rand())/RAND_MAX;
+#else
+  u8 v=volume_main>>2;
+#endif
+
+  if (v>MAX_VU_BAR_HEIGHT){
+    v=MAX_VU_BAR_HEIGHT;
+  }
+  vubars[0].val=v;
 
   static u8 last_vubar_y[NUM_VU_BARS]={0};
 
@@ -510,13 +521,13 @@ void draw_graph(){
       u8 ys_clear=START_VU_YS-y;
       u8 yls_clear=START_VU_YS-last_vubar_y[i];
       u8 yw_clear=ys_clear-yls_clear;
-      rectfill(v.x+1,ys_clear,v.xw-3,yw_clear);
+      rectfill_8(v.x+1,ys_clear,v.xw-3,yw_clear);
     }else{
       gcol=v.col;
       u8 ys_clear=START_VU_YS-y;
       u8 yls_clear=START_VU_YS-last_vubar_y[i];
       u8 yw_clear=yls_clear-ys_clear;
-      rectfill(v.x+1,yls_clear,v.xw-3,yw_clear);
+      rectfill_8(v.x+1,yls_clear,v.xw-3,yw_clear);
     }
     last_vubar_y[i]=y;
   }

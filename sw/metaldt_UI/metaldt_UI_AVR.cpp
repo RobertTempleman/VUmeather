@@ -71,6 +71,31 @@ void vline_2p(u8 x, u8 y,COLORREF gcol2)
 //  gcol=gcol2;
   tft.draw_colored_2_pixel_vline(x,y,col1,gcol2);
 }
+//
+//
+//void rectfill_up_screen(u8 x,u8 y,u8 w,u8 h){
+//  tft.fillRect_up_screen(x,y-h,w,h+1,gcol);
+//  //  for(u8 i=x;i<=x+w;i++){
+//  //    vline(i,y,h);
+//  //  }
+//}
+//
+//
+//void rectfill_down_screen(u8 x,u8 y,u8 w,u8 h){
+//  tft.fillRect_down_screen(x,y-h,w,h+1,gcol);
+//  //  for(u8 i=x;i<=x+w;i++){
+//  //    vline(i,y,h);
+//  //  }
+//}
+
+
+
+void rectfill_8(u8 x,u8 y,u8 w,u8 h){
+  tft.fillRect(x,y-h,w,h+1,gcol);
+  //  for(u8 i=x;i<=x+w;i++){
+  //    vline(i,y,h);
+  //  }
+}
 
 void rectfill(u8 x,u8 y,u8 w,u8 h){
   tft.fillRect(x,y-h,w,h+1,gcol);

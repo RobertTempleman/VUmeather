@@ -550,6 +550,10 @@ void rectfill(u8 x,u8 y,u8 w,u8 h){
   }
 }
 
+void rectfill_8(u8 x,u8 y,u8 w,u8 h){
+  rectfill(x,y,w,h);
+}
+
 void rect(u8 x,u8 y,u8 w,u8 h){
   hline(x  ,y  ,w);
   hline(x  ,y+h,w);
