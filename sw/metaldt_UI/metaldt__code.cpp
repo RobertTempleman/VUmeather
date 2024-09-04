@@ -28,7 +28,7 @@ bool once=true;
 
 
 #define START_VU_X 10
-#define START_VU_YS 154
+#define START_VU_YS 153
 
 #define MAIN_VOL_WIDTH 24
 #define BALANCE_VOL_WIDTH 8
@@ -215,6 +215,8 @@ void draw_parametric_info_display_key(){
   print_pretty_byte(PRINT_X_FREQ+8,y,"BERTYS GREAT VU METER TECH GREAT",PRINT_INFO_TITLE_COL ,PRINT_INFO_TITLE_COL,PRINT_INFO_TITLE_COL);
   y+=14;
   print_pretty_byte(PRINT_X_FREQ+8,y,"Big Bob and Lovely Meral=",goldenrod_cr,white_cr,hotpink_cr);
+  complicated
+
 
 }
 
