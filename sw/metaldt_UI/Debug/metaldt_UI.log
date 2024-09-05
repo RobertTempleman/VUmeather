@@ -1,3 +1,2 @@
 ﻿  metaldt_UI_WIN.cpp
-c:\metal_detecturd\sw\metaldt_ui\metaldt__code.cpp(221): error C2065: 'complicated' : undeclared identifier
-c:\metal_detecturd\sw\metaldt_ui\metaldt__code.cpp(221): error C2143: syntax error : missing ';' before '}'
+  metaldt_UI.vcxproj -> C:\metal_detecturd\sw\Debug\metaldt_UI.exe

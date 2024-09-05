@@ -24,13 +24,14 @@
 
 bool once=true;
 
-#define NUM_VU_BARS 8
+#define NUM_VU_BARS 9
 
 
 #define START_VU_X 10
 #define START_VU_YS 153
 
-#define MAIN_VOL_WIDTH 24
+#define MAIN_VOL_WIDTH 8
+#define MAIN_VU_WIDTH 16
 #define BALANCE_VOL_WIDTH 8
 
 #define MONITOR_VOL_WIDTH 8
@@ -60,14 +61,15 @@ class VUbar{
 u8 VUbar::xoffset=START_VU_X;
 
 VUbar vubars[NUM_VU_BARS]={
-  VUbar("VOL",1  ,MAIN_VOL_WIDTH    ,white_cr  ),
-  VUbar("BL" ,0  ,BALANCE_VOL_WIDTH ,grey50_cr   ),
-  VUbar("BR ",10 ,BALANCE_VOL_WIDTH ,grey50_cr   ),
-  VUbar("SUB",1  ,SUB_VOL_WIDTH     ,green_cr    ),
-  VUbar("LL" ,0  ,MONITOR_VOL_WIDTH ,blue_cr),
-  VUbar("LH" ,0  ,MONITOR_VOL_WIDTH ,goldenrod_cr),
-  VUbar("RL" ,0  ,MONITOR_VOL_WIDTH ,blue_cr),
-  VUbar("RH" ,0  ,MONITOR_VOL_WIDTH ,goldenrod_cr)
+  VUbar("VOL",1  ,MAIN_VOL_WIDTH    ,grey70_cr    ),
+  VUbar("VU" ,1  ,MAIN_VU_WIDTH     ,white_cr     ),
+  VUbar("BL" ,0  ,BALANCE_VOL_WIDTH ,grey50_cr    ),
+  VUbar("BR ",10 ,BALANCE_VOL_WIDTH ,grey50_cr    ),
+  VUbar("SUB",1  ,SUB_VOL_WIDTH     ,green_cr     ),
+  VUbar("LL" ,0  ,MONITOR_VOL_WIDTH ,blue_cr      ),
+  VUbar("LH" ,0  ,MONITOR_VOL_WIDTH ,goldenrod_cr ),
+  VUbar("RL" ,0  ,MONITOR_VOL_WIDTH ,blue_cr      ),
+  VUbar("RH" ,0  ,MONITOR_VOL_WIDTH ,goldenrod_cr )
 };
 
 u8 VUbar_val[NUM_VU_BARS];
@@ -215,7 +217,6 @@ void draw_parametric_info_display_key(){
   print_pretty_byte(PRINT_X_FREQ+8,y,"BERTYS GREAT VU METER TECH GREAT",PRINT_INFO_TITLE_COL ,PRINT_INFO_TITLE_COL,PRINT_INFO_TITLE_COL);
   y+=14;
   print_pretty_byte(PRINT_X_FREQ+8,y,"Big Bob and Lovely Meral=",goldenrod_cr,white_cr,hotpink_cr);
-  complicated
 
 
 }
@@ -503,7 +504,7 @@ void draw_graph(){
   if (v>MAX_VU_BAR_HEIGHT){
     v=MAX_VU_BAR_HEIGHT;
   }
-  vubars[0].val=v;
+  vubars[1].val=v;
 
   static u8 last_vubar_y[NUM_VU_BARS]={0};
 
